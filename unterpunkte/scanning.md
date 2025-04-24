@@ -1,13 +1,13 @@
 # Reconnaissance (Passive Aufklärung)
 
-## Nmap scan
+# Nmap scan
 ![nmap-scan.png](../img/nmap-scan.png)
 
 Nmap:
 Command zusammengebaut mit der Hilfe von: https://www.stationx.net/nmap-cheat-sheet/
 
 ---
-#### Nmap 7.95 scan initiated Thu Apr 24 06:11:59 2025 as: /usr/lib/nmap/nmap -sS -p- -sV -version-all -A -T4 -sC -vvv -oN nmap-scan.txt 10.10.11.46
+##### Nmap 7.95 scan initiated Thu Apr 24 06:11:59 2025 as: /usr/lib/nmap/nmap -sS -p- -sV -version-all -A -T4 -sC -vvv -oN nmap-scan.txt 10.10.11.46
 Nmap scan report for 10.10.11.46
 Host is up, received echo-reply ttl 63 (0.028s latency).
 Scanned at 2025-04-24 06:11:59 CDT for 43s
@@ -52,7 +52,7 @@ HOP RTT      ADDRESS
 
 Read data files from: /usr/share/nmap
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-### Nmap done at Thu Apr 24 06:12:42 2025 -- 1 IP address (1 host up) scanned in 43.74 seconds
+#### Nmap done at Thu Apr 24 06:12:42 2025 -- 1 IP address (1 host up) scanned in 43.74 seconds
 
 ---
 ### => Ergebnis:
@@ -62,7 +62,46 @@ OS and Service detection performed. Please report any incorrect results at https
 
 ![img.png](../img/website.png)
 ---
+---
+# WhatWeb Scan
+![img.png](../img/whatweb-scan.png)
 
+http://heal.htb [200 OK] 
+Country[RESERVED][ZZ],
+HTML5,
+HTTPServer[Ubuntu Linux][nginx/1.18.0 (Ubuntu)],
+IP[10.10.11.46],
+Script, 
+Title[Heal],
+X-Powered-By[Express], 
+nginx[1.18.0]
+---
+
+
+# Nikto Scan
+![img.png](../img/nikto-scan.png)
+- Nikto v2.5.0
+---------------------------------------------------------------------------
++ Target IP:          10.10.11.46
++ Target Hostname:    heal.htb
++ Target Port:        80
++ Start Time:         2025-04-24 12:54:03 (GMT-5)
+---------------------------------------------------------------------------
++ Server: nginx/1.18.0 (Ubuntu)
++ /: Retrieved x-powered-by header: Express.
++ /: The anti-clickjacking X-Frame-Options header is not present. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
++ /: The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type. See: https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/missing-content-type-header/
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ nginx/1.18.0 appears to be outdated (current is at least 1.20.1).
++ OPTIONS: Allowed HTTP Methods: GET, HEAD .
++ /#wp-config.php#: #wp-config.php# file found. This file contains the credentials.
++ 7962 requests: 0 error(s) and 6 item(s) reported on remote host
++ End Time:           2025-04-24 13:07:07 (GMT-5) (784 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+
+---
 # Website Enumeration
 
 Account erstellen:
@@ -78,6 +117,8 @@ command zusammengebaut von: https://cheatsheet.haax.fr/web-pentest/tools/ffuf/
 
 - keine endpoints gefunden die man aufrufen kann
 
+---
+
 ## BurpSuite - Requests anschauen
 ![img.png](../img/burp-suite.png)
 
@@ -86,15 +127,33 @@ Interessant weil dort Parameter zu sehen sind:
 ### GET   http://heal.htb/sockjs-node/info?t=1745497786739
 Aufruf: ![GET_param_1.png](../img/GET_param_1.png)
 
+### POST  http://heal.htb/sockjs-node/862/jmm2xqzl/xhr_streaming?t=1745497787461
+Aufruf: ![POST_param_1.png](../img/POST_param_1.png)
+- Ergebnis: 405 Error
+
+
 ### GET   http://heal.htb/sockjs-node/862/un0nxlzy/htmlfile?c=_jp.aqe2epm
 Aufruf: ![GET_param_2.png](../img/GET_param_2.png)
 
 Eine Response wird angezeigt -> Don't panic!
 
+Response:
+![img.png](../img/GET-response-param-2.png)
+- Script ist hier erkennbar -> daraus kann man schließen, dass es JavaScript ist und kein php, python, etc
+
+
 Weiter:
 - ausprobieren ob LFI möglich ist und ich so an mehr informationen herankomme
+  ![img.png](../img/LFI_try.png)
 
 
-### POST  http://heal.htb/sockjs-node/862/jmm2xqzl/xhr_streaming?t=1745497787461
-Aufruf: ![POST_param_1.png](../img/POST_param_1.png)
-- Ergebnis: 405 Error
+### XSS
+- Nach sockjs cve gegoogelt und herausgefunden, dass es eine DoS und XSS Schwachstelle gibt: 
+  - https://security.snyk.io/package/npm/sockjs
+    - XSS möglich in allen Versionen die <0.3.0
+    - XSS versucht
+    - PoC: https://github.com/theyiyibest/Reflected-XSS-on-SockJS
+      - hat nicht geklappt => Version muss >=0.3.0 sein
+    - CVE XSS: https://cve.mitre.org/cgi-bin/cvename.cgi?name=2020-8823
+---
+
