@@ -1,7 +1,7 @@
 # Reconnaissance (Passive Aufklärung)
 
 ## Nmap scan
-![nmap-scan.png](nmap-scan.png)
+![nmap-scan.png](../img/nmap-scan.png)
 
 Nmap:
 Command zusammengebaut mit der Hilfe von: https://www.stationx.net/nmap-cheat-sheet/
@@ -60,34 +60,34 @@ OS and Service detection performed. Please report any incorrect results at https
 - Port 80 (http) offen 
   - => Es läuft eine Website auf nginx 1.18.0 (Ubuntu)
 
-![img.png](website.png)
+![img.png](../img/website.png)
 ---
 
 # Website Enumeration
 
 Account erstellen:
-![img.png](signup.png)
+![img.png](../img/signup.png)
 
 geht nicht:
-![img_1.png](signup-with-network.png)
+![img_1.png](../img/signup-with-network.png)
 
 ## Subdomains fuzzen
 command zusammengebaut von: https://cheatsheet.haax.fr/web-pentest/tools/ffuf/
 
-![ffuf-api-endpoints.png](ffuf-api-endpoints.png)
+![ffuf-api-endpoints.png](../img/ffuf-api-endpoints.png)
 
 - keine endpoints gefunden die man aufrufen kann
 
 ## BurpSuite - Requests anschauen
-![img.png](burp-suite.png)
+![img.png](../img/burp-suite.png)
 
 Interessant weil dort Parameter zu sehen sind:
 
 ### GET   http://heal.htb/sockjs-node/info?t=1745497786739
-Aufruf: ![GET_param_1.png](GET_param_1.png)
+Aufruf: ![GET_param_1.png](../img/GET_param_1.png)
 
 ### GET   http://heal.htb/sockjs-node/862/un0nxlzy/htmlfile?c=_jp.aqe2epm
-Aufruf: ![GET_param_2.png](GET_param_2.png)
+Aufruf: ![GET_param_2.png](../img/GET_param_2.png)
 
 Eine Response wird angezeigt -> Don't panic!
 
@@ -96,5 +96,5 @@ Weiter:
 
 
 ### POST  http://heal.htb/sockjs-node/862/jmm2xqzl/xhr_streaming?t=1745497787461
-Aufruf: ![img.png](img.png)
+Aufruf: ![POST_param_1.png](../img/POST_param_1.png)
 - Ergebnis: 405 Error
