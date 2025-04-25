@@ -122,8 +122,8 @@ command zusammengebaut von: https://cheatsheet.haax.fr/web-pentest/tools/ffuf/
 ## BurpSuite - Requests anschauen
 ![img.png](../img/burp-suite.png)
 
-Interessant weil dort Parameter zu sehen sind:
-### api.heal.htb
+### Interessant weil dort Parameter zu sehen sind:
+### http://api.heal.htb/signin
 
 ![img.png](api-heal-htb.png)
 Ich habe den api.heal.htb Pfad relativ früh bei BurpSuite bemerkt, jedoch habe
