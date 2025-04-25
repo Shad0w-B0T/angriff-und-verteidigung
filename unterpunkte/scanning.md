@@ -123,14 +123,56 @@ command zusammengebaut von: https://cheatsheet.haax.fr/web-pentest/tools/ffuf/
 ![img.png](../img/burp-suite.png)
 
 Interessant weil dort Parameter zu sehen sind:
+### api.heal.htb
 
+![img.png](api-heal-htb.png)
+Ich habe den api.heal.htb Pfad relativ früh bei BurpSuite bemerkt, jedoch habe
+ich total vergessen diesen in die /etc/hosts Datei einzutragen und habe mich dann 
+viel zu lange mit allem anderen befasst und mich gewundert warum es nicht geht. 
+Die genaue Anzahl an Stunden die ich damit verschwendet habe will ich nicht nennen xD
+
+---
 ### GET   http://heal.htb/sockjs-node/info?t=1745497786739
 Aufruf: ![GET_param_1.png](../img/GET_param_1.png)
 
+- Response:
+```
+  {
+    "websocket": true,
+    "origins": ["*:*"],
+    "cookie_needed": false,
+    "entropy": 1009027318
+  }
+```
+Websockets sind erlaubt 
+=> Erstmal anschauen wie Websockets funktionieren:
+- https://www.youtube.com/watch?v=1BfCnjr_Vjg
+- https://www.youtube.com/watch?v=xIjnXwob8ic (Richtig gute und ausführliche Erklärung!)
+- https://book.hacktricks.wiki/en/pentesting-web/websocket-attacks.html?highlight=websocke#what-are-websockets (Hier geschaut, wie die initiale WS verbindung aussieht)
+
+=> weitere Requests anschauen um zu sehen, wo die Verbindung aufgebaut werden soll
+
+---
+### GET http://heal.htb/sockjs-node/987/dw5uclg4/websocket
+Websocket Verbindungsaufbau:
+- Initial über HTTP
+- Upgrade auf WS
+
+#### Initial über HTTP:
+![img_1.png](../img/websocket-request_doesnt-work.png)
+- Verbindung soll aufgebaut werden, aber die Websocket Request ist nicht valide 
+  - Warum?
+    - t
+
+#### Upgrade auf WS
+test
+
+---
 ### POST  http://heal.htb/sockjs-node/862/jmm2xqzl/xhr_streaming?t=1745497787461
 Aufruf: ![POST_param_1.png](../img/POST_param_1.png)
 - Ergebnis: 405 Error
 
+---
 
 ### GET   http://heal.htb/sockjs-node/862/un0nxlzy/htmlfile?c=_jp.aqe2epm
 Aufruf: ![GET_param_2.png](../img/GET_param_2.png)
@@ -140,6 +182,23 @@ Eine Response wird angezeigt -> Don't panic!
 Response:
 ![img.png](../img/GET-response-param-2.png)
 - Script ist hier erkennbar -> daraus kann man schließen, dass es JavaScript ist und kein php, python, etc
+```
+ <script>
+    document.domain = document.domain;
+    var c = parent._jp.aqe2epm;
+    c.start();
+    function p(d) {c.message(d);};
+    window.onload = function() {c.stop();};
+  </script>
+```
+```
+c.start: 
+- Startet die Websocket Verbindung
+
+window.onload: 
+- Wenn das window refresht wird -> Websocket Verbindung wird beendet
+```
+
 
 
 Weiter:
@@ -157,3 +216,4 @@ Weiter:
     - CVE XSS: https://cve.mitre.org/cgi-bin/cvename.cgi?name=2020-8823
 ---
 
+ 
