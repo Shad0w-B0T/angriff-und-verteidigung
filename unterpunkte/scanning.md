@@ -7,6 +7,7 @@ Nmap:
 Command zusammengebaut mit der Hilfe von: https://www.stationx.net/nmap-cheat-sheet/
 
 ---
+```
 ##### Nmap 7.95 scan initiated Thu Apr 24 06:11:59 2025 as: /usr/lib/nmap/nmap -sS -p- -sV -version-all -A -T4 -sC -vvv -oN nmap-scan.txt 10.10.11.46
 Nmap scan report for 10.10.11.46
 Host is up, received echo-reply ttl 63 (0.028s latency).
@@ -53,7 +54,7 @@ HOP RTT      ADDRESS
 Read data files from: /usr/share/nmap
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 #### Nmap done at Thu Apr 24 06:12:42 2025 -- 1 IP address (1 host up) scanned in 43.74 seconds
-
+```
 ---
 ### => Ergebnis:
 - Port 22 (ssh) offen
@@ -66,6 +67,14 @@ OS and Service detection performed. Please report any incorrect results at https
 # WhatWeb Scan
 ![img.png](../img/whatweb-scan.png)
 
+```
+Command:
+
+whatweb http://heal.htb
+```
+```
+Result:
+
 http://heal.htb [200 OK] 
 Country[RESERVED][ZZ],
 HTML5,
@@ -75,11 +84,13 @@ Script,
 Title[Heal],
 X-Powered-By[Express], 
 nginx[1.18.0]
+```
 ---
 
 
 # Nikto Scan
 ![img.png](../img/nikto-scan.png)
+```
 - Nikto v2.5.0
 ---------------------------------------------------------------------------
 + Target IP:          10.10.11.46
@@ -99,7 +110,7 @@ nginx[1.18.0]
 + End Time:           2025-04-24 13:07:07 (GMT-5) (784 seconds)
 ---------------------------------------------------------------------------
 + 1 host(s) tested
-
+```
 
 ---
 # Website Enumeration
@@ -107,7 +118,9 @@ nginx[1.18.0]
 Account erstellen:
 ![img.png](../img/signup.png)
 
-geht nicht:
+Ging anfangs nicht, weil ich vergessen hatte die IP einzutragen:
+<br>
+siehe [hier](./subdomain.md#dummheit)
 ![img_1.png](../img/signup-with-network.png)
 
 ## Subdomains fuzzen
@@ -123,15 +136,7 @@ command zusammengebaut von: https://cheatsheet.haax.fr/web-pentest/tools/ffuf/
 ![img.png](../img/burp-suite.png)
 
 ### Interessant weil dort Parameter zu sehen sind:
-### http://api.heal.htb/signin
 
-![img.png](api-heal-htb.png)
-Ich habe den api.heal.htb Pfad relativ früh bei BurpSuite bemerkt, jedoch habe
-ich total vergessen diesen in die /etc/hosts Datei einzutragen und habe mich dann 
-viel zu lange mit allem anderen befasst und mich gewundert warum es nicht geht. 
-Die genaue Anzahl an Stunden die ich damit verschwendet habe will ich nicht nennen xD
-
----
 ### GET   http://heal.htb/sockjs-node/info?t=1745497786739
 Aufruf: ![GET_param_1.png](../img/GET_param_1.png)
 
@@ -205,7 +210,11 @@ Weiter:
 - ausprobieren ob LFI möglich ist und ich so an mehr informationen herankomme
   ![img.png](../img/LFI_try.png)
 
+---
+### Subdomain: http://api.heal.htb/signin
+[Subdomain](./subdomain.md)
 
+---
 ### XSS
 - Nach sockjs cve gegoogelt und herausgefunden, dass es eine DoS und XSS Schwachstelle gibt: 
   - https://security.snyk.io/package/npm/sockjs
