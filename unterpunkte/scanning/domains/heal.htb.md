@@ -763,6 +763,7 @@ Wo liegen diese standardmäßig?/Welche gibt es?
 1. Quellen (Ruby configuration files):
    1. https://dev.to/vvo/secrets-environment-variables-config-files-the-ruby-on-rails-case-433f
    2. https://guides.rubyonrails.org/security.html#custom-credentials
+   3. https://guides.rubyonrails.org/v7.1/debugging_rails_applications.html#the-logger
 
 2. Anhand von den Quellen eigene kleine Liste zusammengebaut:
 ```
@@ -803,13 +804,16 @@ ruby-paths.txt
 /config/wrap_parameters.rb
 /db/schema.rb
 /db/schema.sql
+/log/development.log 
+/log/production.log
 ```
 
 3. Manuell ```/app/controllers/application_controller.rb``` getestet 
-und den pfad nach oben gegangen bis es bei ```../../app/controllers/application_controller.rb```
+und den pfad so lange nach oben gegangen bis es bei ```../../app/controllers/application_controller.rb```
 geklappt hat
 
-5. Jetzt mit ```ffuf``` (https://github.com/ffuf/ffuf) die Liste anwenden und schauen welche es gibt
+5. Jetzt mit ```ffuf``` (https://github.com/ffuf/ffuf) die Liste anwenden und schauen welche Pfade es gibt
+   - Komisch dabei: Bei mehrfachem scannen hatte ich teilweise unterschiedliche Pfade
 ```
 Description:
 
@@ -829,7 +833,7 @@ ffuf  -u http://api.heal.htb/download?filename=../../FUZZ
 ```
 
 ```
-Result/Accessible:
+Result Paths:
 
 /config/environments/test.rb                        [Status: 200, Size: 2643, Words: 348, Lines: 65, Duration: 37ms]
 /config/initializers/filter_parameter_logging.rb    [Status: 200, Size: 448, Words: 57, Lines: 9, Duration: 231ms]
@@ -843,6 +847,8 @@ Result/Accessible:
 /config/environments/development.rb                 [Status: 200, Size: 2513, Words: 339, Lines: 74, Duration: 1330ms]
 :: Progress: [34/34] :: Job [1/1] :: 16 req/sec :: Duration: [0:00:02] :: Errors: 0 ::
 ```
+
+[API Path Findings](../api/api-findings.md)
 
 ---
 
