@@ -9,9 +9,14 @@ Websocket Thema
 - [PDF Requests](./unterpunkte/scanning/domains/heal.htb.md#resume-builder-page) -
 Schauen ob hier etwas möglich ist (XSS, etc.)
 
+
+- [TODO](./unterpunkte/scanning/domains/heal.htb.md#todo) -
+
+
+
 ### api.heal.htb.md
 - [todo](./unterpunkte/scanning/domains/api.heal.htb.md) 
 
 ### take-survey.heal.htb.md
-- [dirb](./unterpunkte/scanning/domains/take-survey.heal.htb.md#dirb-scan-survey) -
+- [dirb](./unterpunkte/scanning/domains/take-survey.heal.htb.md#ergebnis-todo) -
 sobald es fertig geladen ist in den results einfügen + ergebnisse ausfüllen
