@@ -846,12 +846,20 @@ Result Paths:
 /config/credentials.yml.enc                         [Status: 200, Size: 456, Words: 1, Lines: 1, Duration: 1232ms]
 /config/environments/development.rb                 [Status: 200, Size: 2513, Words: 339, Lines: 74, Duration: 1330ms]
 :: Progress: [34/34] :: Job [1/1] :: 16 req/sec :: Duration: [0:00:02] :: Errors: 0 ::
+
+more from other ffuf fuzz:
+/config/boot.rb
+/log/development.log
+/config/application.rb
+/config/routes.rb
+/config/puma.rb
 ```
 
 [API Path Findings](../api/api-findings.md)
 
+## Relevante Ergebnisse:
+[Gaining DB Access](../../gaining-access/gaining-access-main.md#1-gaining-db-access)
 ---
-
 
 
 

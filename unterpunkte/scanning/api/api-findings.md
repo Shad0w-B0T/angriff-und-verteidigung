@@ -12,7 +12,9 @@ require "bundler/setup" # Set up gems listed in the Gemfile.
 require "bootsnap/setup" # Speed up boot time by caching expensive operations.
 ```
 
-## /Gemfile.lock -> jetzt habe ich alle Versionen
+## /Gemfile.lock
+Infos:
+- Gemfile.lock -> Alle Dependencies mit Version
 ```
 GEM
   remote: https://rubygems.org/
@@ -247,8 +249,11 @@ BUNDLED WITH
    2.5.20
 ```
 
-### /config/database.yml
-
+## /config/database.yml -> Dadurch die DB gefunden ```storage/development.sqlite3```
+Infos:
+- SQLite Version 3.8.0
+- Dev + Production DB: ```storage/development.sqlite3```
+- Test DB: ```storage/test.sqlite3```
 ```
 # SQLite. Versions 3.8.0 and up are supported.
 #   gem install sqlite3
@@ -277,14 +282,17 @@ production:
   database: storage/development.sqlite3
 ```
 
-### /config/credentials.yml.enc
+## /storage/development.sqlite3
+Infos:
+- Datenbank binary
 
+
+## /config/credentials.yml.enc
 ```
 1dMkoxx+3u+vK2g1BWntnRZqGj16vLi5rQJlP/P+pcIpGeK7b12TC2UWjrdx+PoC3iYnMWS2QLK5jnBnaNXDHpEL9oDgc6Ul/9/ghl+3g4AzaFeHy1/yG6SMxA11CMmQhTcSGj1jBMyCT7dgmV6/hfCyb933QHukceAV1NVHqLH9Tcd+WnB3okQhD3NUOLhZ3ivc3wr2pyvxX7ym5kLIjSuHNwRcmMwcXS3e26Bc3Lk9ghUq795a90WfGtV7cIa2TzdY5lbMHHi167IP3zzpUvmY0AcR+WmXHt35WjktrELPe7hR83MRHwTrWt3OmqafsPBufCl1oUY1K2sEIJ8VQjHhrP870ASSS3BpEiGSdrCU53jNVIquJwaE8lg0p3phhMbLXYVVT9QZO1banDh5avfcmSEM--dsbT6QUqCzyNMigC--9SEHtK8HjvpnlvfmWIqoMg==
 ```
 
 ## /log/development.log
-
 ```
   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? AND "users"."fullname" = ? AND "users"."email" = ? LIMIT ?[0m  [["username", "ralph"], ["fullname", "Administrator"], ["email", "ralph@heal.htb"], ["LIMIT", 1]]
   ↳ lib/tasks/create_or_update_admin.rake:4:in `block (2 levels) in <main>'
@@ -1045,7 +1053,7 @@ production:
 ---
 # Not useful atm:
 
-### /config/environments/test.rb
+## /config/environments/test.rb
 ```
 require "active_support/core_ext/integer/time"
 
@@ -1113,7 +1121,7 @@ Rails.application.configure do
 end
 ```
 
-### /config/initializers/filter_parameter_logging.rb
+## /config/initializers/filter_parameter_logging.rb
 ```
 # Be sure to restart your server when you modify this file.
 
@@ -1125,7 +1133,7 @@ Rails.application.config.filter_parameters += [
 ]
 ```
 
-### /config/initializers/cors.rb
+## /config/initializers/cors.rb
 ```
 # Be sure to restart your server when you modify this file.
 
@@ -1145,7 +1153,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
 end
 ```
 
-### /config/cable.yml
+## /config/cable.yml
 ```
 development:
   adapter: async
@@ -1159,7 +1167,7 @@ production:
   channel_prefix: resume_api_production
 ```
 
-### /app/models/user.rb
+## /app/models/user.rb
 ```
 class User < ApplicationRecord
   before_create :set_default_admin
@@ -1178,13 +1186,13 @@ class User < ApplicationRecord
 end
 ```
 
-### /app/controllers/application_controller.rb
+## /app/controllers/application_controller.rb
 ```
 class ApplicationController < ActionController::API
 end
 ```
 
-### /config/environments/development.rb
+## /config/environments/development.rb
 ```
 require "active_support/core_ext/integer/time"
 
@@ -1261,7 +1269,7 @@ Rails.application.configure do
 end
 ```
 
-### /config/environments/production.rb
+## /config/environments/production.rb
 ```
 require "active_support/core_ext/integer/time"
 
