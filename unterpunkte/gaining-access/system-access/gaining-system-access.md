@@ -50,50 +50,91 @@ Das hier gefunden:
   - PoC: https://github.com/Y1LD1R1M-1337/Limesurvey-RCE
   - Exploit DB: https://www.exploit-db.com/exploits/50573
 
-### PoC heruntergeladen:
 
-![img.png](poc-cve-folder.png)
+## Vorgehen:
 
-1. ```php-rev.php``` angepasst
-   - IP und Port auf eigene IP gestellt 
-
-![img.png](php-rev-shell-script.png)
-![img.png](own-ip-addr.png)
-2. t
+### 1. PoC heruntergeladen (https://github.com/Y1LD1R1M-1337/Limesurvey-RCE/tree/main)
+![img.png](../../../img/poc-cve-folder.png)
 
 
+### 2. ```php-rev.php```
+- IP und Port angepasst (Eigene IP herausgefunden mit ```ip a```)
 
-
-
-HIER WEITER MACHEN
+![img.png](../../../img/php-rev-shell-script.png)
 
 
 
+### 3. Create a zip file with the config and the reverse shell code
+![img.png](../../../img/zipped-rev-shell-and-config.png)
 
 
 
+### 4. Upload & Install Plugin
 
-
-
-### Vorgehen:
-1. Login + go to configuration
-
+#### 4.1 Login + go to configuration
 ![img.png](../../../img/lime-configration.png)
 
-2. Under configuration navigate to the plugins
-
+#### 4.2 Under configuration navigate to the plugins
 ![img_1.png](../../../img/lime-plugins.png)
 
-3. Upload and install button
-
+#### 4.3 Upload and install button
 ![img_2.png](../../../img/lime-plugin-upload-and-install.png)
 
-4. Zip file upload
+#### 4.4 Upload & Install malicious zip file
+![img.png](../../../img/lime-upload-zip.png)
 
-![img_3.png](../../../img/lime-upload-zip.png)
+#### 4.5 Error -> Wrong Lime version
+![img.png](../../../img/wrong-lime-version.png)
+
+#### 4.6 Change version in config file / add version
+![img.png](../../../img/added-lime-version-in-config.png)
+
+#### 4.7 Try again -> works
+![img.png](../../../img/uploaded-zip-file.png)
+
+#### 4.8 Activate Plugin
+![img.png](../../../img/activate-plugin.png)
+
+#### 4.9 Get Plugin id by hovering over the plugin
+![img.png](../../../img/plugin-id.png)
 
 
+
+### 5. ```exploit.py ```
+
+#### 5.1. Script anpassen
+![img.png](../../../img/exploit-plugin-id.png)
+
+#### 5.2 Lokalen Pfad anpassen
+![img.png](../../../img/path-to-rev-shell.png)
+
+#### 5.3 Listen on ```Port 1337```
+```
+nc -lvp 1337
+
+   -l: Listen mode. Netcat will wait for an incoming connection.
+   -v: Verbose. Provides more detailed output.
+   -p: Local port to listen on.
+```
+![img.png](../../../img/nc-listening.png)
+
+#### 5.4 Exploit Datei ```exploit.py``` ausführen
+```
+python3 exploit.py URL username password port
+
+python3 exploit http://take-survey.heal.htb ralph 147258369 80
+```
+![img.png](../../../img/exploit-execute.png)
+![img_1.png](../../../img/reverse-shell-exploit.png)
+
+- Hat geklappt => Reverse Shell erlangt
 ---
+
+# Reverse Shell
+
+## Reverse Shell in Bash erweitern
+
+HIER WEITER
 
 
 
