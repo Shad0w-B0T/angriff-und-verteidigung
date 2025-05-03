@@ -131,10 +131,12 @@ python3 exploit http://take-survey.heal.htb ralph 147258369 80
 ---
 
 # Reverse Shell
+- Habe eine dumme shell mit der ich keine arrow key oder auto completion benutzen kann, deswegen die
+dumme shell zu einem terminal upgraden
 
-## Reverse Shell in Bash erweitern
+## Upgrade Netcat Listener into Terminal
 
-HIER WEITER
+
 
 
 
