@@ -127,20 +127,95 @@ python3 exploit http://take-survey.heal.htb ralph 147258369 80
 ![img.png](../../../img/exploit-execute.png)
 ![img_1.png](../../../img/reverse-shell-exploit.png)
 
-- Hat geklappt => Reverse Shell erlangt
+- Hat geklappt => Reverse Shell erlangt als www-data User
 ---
 
 # Reverse Shell
-- Habe eine dumme shell mit der ich keine arrow key oder auto completion benutzen kann, deswegen die
+## Shell Enumeration
+
+- Habe eine dumme shell mit der ich keine arrow key oder auto completion benutzen kann => Die
 dumme shell zu einem terminal upgraden
 
-## Upgrade Netcat Listener into Terminal
+
+![img.png](../../../img/shell-enumeration.png)
+
+---
+## Upgrade dumb shell to fully functional terminal to be able to enumerate better
+Quelle: https://0xmrmasry.medium.com/upgrading-simple-shells-to-fully-interactive-ttys-eeeea1e6654e
+
+### 1. Herausfinden ob ich python für ein upgrade verwenden kann
+```which python3```
+
+![img.png](../../../img/which-python.png)
+
+### 2. ```python3 -c 'import pty; pty.spawn("/bin/bash")'```
+![img.png](../../../img/get-bash.png)
+
+### 3. STRG + Z um Netcat in den Hintergrund zu schicken
+![img.png](../../../img/send-nc-to-background.png)
+
+### 4. Terminal auf raw setzen und die Eingabe weiterleiten + danach Netcat wieder in den vordergrund holen
+![img.png](../../../img/upgrade-shell-to-terminal.png)
+```
+stty raw -echo;fg
+
+=>  Kombi sorgt dafür, dass die Sonderzeichen nur innerhalb speziell DIESER shell im raw format übertragen werden. 
+    Wenn nicht, dann kann es dazu führen, dass alle Sonderzeichen nicht mehr interpretiert werden (auch in der shell auf meinem rechner).  
+  
+stty raw:
+=>  Sorgt dafür, dass die sonderzeichen nicht interpretiert werden sondern im raw format an die shell über echo hingesendet werden
+
+fg (foreground):
+=>  Sorgt dafür, dass die shell wieder in den vordergrund gesetzt wird
+```
+
+### 5. Arrow keys and TAB work but 'clear' doesn't
+![img.png](../../../img/terminal-clear-does-not-work.png)
+
+Herausfinden, welches Terminal ich benutze:
+```
+echo $TERM
+```
+```
+Result:
+
+xterm-256color
+```
+![img.png](../../../img/standard-terminal.png)
+
+Anschließend das Terminal setzen
+```
+export TERM=xterm-256color
+```
+![img_1.png](../../../img/export-terminal.png)
+
+### 6. TAB, Arrow keys, Auto completion works
+![fully-functional-terminal.png](../../../img/fully-functional-terminal.png)
+---
+
+## Continue Enumeration
+### 1. Ich bin gerade nur www-data user => sehr eingeschränkte Rechte
+
+### 2. Prüfen, was ich als www-data mit sudo ausführen darf
+```
+sudo -l
+```
+![img.png](../../../img/www-data-sudo.png)
+
+### 3. 
 
 
 
+### 999. Mit linpeas herausfinden, welche Pfade ich nutzen kann um meine Rechte auszuweiten
+Quelle:
+https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS
+
+#### 1. Script herunterladen
+#### 2. Script auf Zielsystem bekommen
+#### 3. Script auf Zielsystem ausführen
 
 
-
+---
 
 
 
