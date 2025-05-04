@@ -161,7 +161,7 @@ stty raw -echo;fg
 
 =>  Kombi sorgt dafür, dass die Sonderzeichen nur innerhalb speziell DIESER shell im raw format übertragen werden. 
     Wenn nicht, dann kann es dazu führen, dass alle Sonderzeichen nicht mehr interpretiert werden (auch in der shell auf meinem rechner).  
-  
+    Befehle aus dem lokalen Terminal in die Reverse Shell durchreichen.
 stty raw:
 =>  Sorgt dafür, dass die sonderzeichen nicht interpretiert werden sondern im raw format an die shell über echo hingesendet werden
 
@@ -191,6 +191,7 @@ export TERM=xterm-256color
 
 ### 6. TAB, Arrow keys, Auto completion works
 ![fully-functional-terminal.png](../../../img/fully-functional-terminal.png)
+
 ---
 
 ## Continue Enumeration
@@ -202,7 +203,87 @@ sudo -l
 ```
 ![img.png](../../../img/www-data-sudo.png)
 
-### 3. 
+Geht nicht, da ich das Passwort nicht habe.
+
+### 3. Herausfinden welche User es gibt die eine shell haben
+```
+cat /etc/passwd | grep 'sh$'
+```
+![users-with-bash.png](../../../img/users-with-bash.png)
+
+```
+root:x:0:0:root:/root:/bin/bash
+ralph:x:1000:1000:ralph:/home/ralph:/bin/bash
+postgres:x:116:123:PostgreSQL administrator,,,:/var/lib/postgresql:/bin/bash
+ron:x:1001:1001:,,,:/home/ron:/bin/bash
+```
+
+Es gibt 3 User mit einer shell:
+- ralph
+- ron
+- postgres
+
+### 4. In deren Verzeichnis gehen
+1. Ralph und Ron:
+- haben ein Home Verzeichnis
+
+![img.png](../../../img/home-dir-no-access-as-www-data-user.png)
+Ich habe keinen Zugriff auf deren Home Verzeichnisse.
+
+2. Postgres User:
+
+![img.png](../../../img/postgres-directory.png)
+
+![postgres-main-denied.png](../../../img/postgres-main-denied.png)
+
+Kein Zugriff auf die Postgres Verzeichnisse.
+
+
+### 5. Schreibzugriff finden um linpeas auf den Server zu laden
+
+1. ```/tmp``` alle rechte
+
+![img.png](../../../img/temp-dir-all-rights.png)
+
+2. Schreibe/Lese Rechte 
+
+![img.png](../../../img/temp-access.png)
+
+3. HTTP Server über Python hochfahren und das linpeas script bereitstellen
+
+![img.png](../../../img/python-http-server.png)
+
+4. linpeas script von Server herunterladen
+
+![img.png](../../../img/linpeas-script-download.png)
+
+5. Execute Rechte hinzufügen
+```
+chmod +x linpeas.sh
+```
+![img.png](../../../img/linpeas-add-execute-rights.png)
+
+6. linpeas ausführen und auswerten
+
+- System Infos
+![img.png](../../../img/linpeas-system-infos.png)
+
+
+HIER WEITER
+```
+
+```
+
+- Linux Exploit Suggestions
+![img.png](../../../img/linpeas-exploit-suggestion.png)
+
+- Useful software / installed compilers 
+![img.png](../../../img/linpeas-useful-software.png)
+
+- t
+
+
+
 
 
 
