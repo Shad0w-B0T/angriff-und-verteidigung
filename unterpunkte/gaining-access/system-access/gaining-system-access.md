@@ -240,6 +240,8 @@ Kein Zugriff auf die Postgres Verzeichnisse.
 
 
 ### 5. Schreibzugriff finden um linpeas auf den Server zu laden
+Script:
+https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS
 
 1. ```/tmp``` alle rechte
 
@@ -263,39 +265,53 @@ chmod +x linpeas.sh
 ```
 ![img.png](../../../img/linpeas-add-execute-rights.png)
 
-6. linpeas ausführen und auswerten
 
-- System Infos
+### Linpeas ausführen und auswerten
+
+#### 1. System Infos
 ![img.png](../../../img/linpeas-system-infos.png)
 
-
-HIER WEITER
-```
-
-```
-
-- Linux Exploit Suggestions
+#### 2. Linux Exploit Suggestions
 ![img.png](../../../img/linpeas-exploit-suggestion.png)
 
-- Useful software / installed compilers 
+#### 3. Useful software / installed compilers 
 ![img.png](../../../img/linpeas-useful-software.png)
 
-- t
+#### 4. Found config files with password
+
+![img_1.png](../../../img/linpeas-config-password-found.png)
+
+- Inside the config file:
+![img.png](../../../img/detailed-config-file.png)
 
 
 
+### Newly found password usage
+
+#### 1. Try in db
+![img_1.png](../../../img/ask-psql-installed.png)
+
+```
+psql -d survey -h localhost -p 5432 -U db_user -W
+
+    -d = DB
+    -h = HOST
+    -p = PORT
+    -U = USER
+    -W = Connect via password
+```
+![img_2.png](../../../img/psql-db-access.png)
+- Nothing of value to get user access
 
 
+#### 2. Try Passwords with other Users
+- Ron works
 
-### 999. Mit linpeas herausfinden, welche Pfade ich nutzen kann um meine Rechte auszuweiten
-Quelle:
-https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS
+![img.png](../../../img/user-access.png)
 
-#### 1. Script herunterladen
-#### 2. Script auf Zielsystem bekommen
-#### 3. Script auf Zielsystem ausführen
-
-
+![img.png](user-flag.png)
+![img.png](htb-confirmed-user-flag.png)
+- Now I can connect to ron via ssh with his credentials
 ---
 
 
