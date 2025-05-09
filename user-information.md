@@ -16,7 +16,9 @@ ssh ron@heal.htb
 ```
 AdmiDi0_pA$$w0rd
 ```
-
+```
+127.0.0.1:1337
+```
 
 # Flags:
 ### User

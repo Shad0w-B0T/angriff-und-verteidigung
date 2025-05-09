@@ -228,6 +228,7 @@ Es gibt 3 User mit einer shell:
 - haben ein Home Verzeichnis
 
 ![img.png](../../../img/home-dir-no-access-as-www-data-user.png)
+
 Ich habe keinen Zugriff auf deren Home Verzeichnisse.
 
 2. Postgres User:
@@ -239,7 +240,8 @@ Ich habe keinen Zugriff auf deren Home Verzeichnisse.
 Kein Zugriff auf die Postgres Verzeichnisse.
 
 
-### 5. Schreibzugriff finden um linpeas auf den Server zu laden
+## Linpeas
+### Schreibzugriff finden um linpeas auf den Server zu laden
 Script:
 https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS
 
@@ -274,10 +276,30 @@ chmod +x linpeas.sh
 #### 2. Linux Exploit Suggestions
 ![img.png](../../../img/linpeas-exploit-suggestion.png)
 
-#### 3. Useful software / installed compilers 
+#### 3. Cron Jobs
+![img.png](../../../img/cron-jobs.png)
+
+#### 4. Active Ports
+- Interesting because of the new Ports
+
+![linpeas-active-ports.png](../../../img/linpeas-active-ports.png)
+
+1. Search how to access internal ports from outside
+   - ssh local port forwarding 
+   - Quelle:
+     - https://snapshooter.com/learn/linux/how-to-ssh-tunel-proxy
+     - https://www.youtube.com/watch?v=F-ubwghsWPM
+
+2. Need ssh password to be able to access internal ports
+3. Get User access first
+
+#### 5. Useful software / installed compilers
 ![img.png](../../../img/linpeas-useful-software.png)
 
-#### 4. Found config files with password
+#### 6. PostgreSQL Files
+![img.png](../../../img/postgresql-files.png)
+
+#### 6. Found config files with password
 
 ![img_1.png](../../../img/linpeas-config-password-found.png)
 
@@ -309,14 +331,13 @@ psql -d survey -h localhost -p 5432 -U db_user -W
 
 ![img.png](../../../img/user-access.png)
 
-![img.png](user-flag.png)
-![img.png](htb-confirmed-user-flag.png)
+![img.png](../../../img/user-flag.png)
+![img.png](../../../img/htb-confirmed-user-flag.png)
 - Now I can connect to ron via ssh with his credentials
 ---
 
 
+# [Getting Root](../../priviledge-escalation/root-esc/getting-root.md)
 
 
-
-
-
+---

@@ -12,6 +12,8 @@
 - Rails version: 7.1.4
 - SQLite Version 3.8.0
 
+### Consul Webapp
+- v1.19.2
 
 ### /etc/passwd
 ```

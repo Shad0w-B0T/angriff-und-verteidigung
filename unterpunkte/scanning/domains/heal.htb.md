@@ -858,7 +858,7 @@ more from other ffuf fuzz:
 [API Path Findings](../api/api-findings.md)
 
 ## Relevante Ergebnisse:
-[Gaining DB Access](../../gaining-access/gaining-access-main.md#1-gaining-db-access)
+[Gaining DB Access](../../gaining-access/main-gaining-access.md#1-gaining-db-access)
 ---
 
 
