@@ -17,8 +17,9 @@ ssh ron@heal.htb
 AdmiDi0_pA$$w0rd
 ```
 ```
-127.0.0.1:1337
+python3 -c 'import pty; pty.spawn("/bin/bash")'
 ```
+
 
 # Flags:
 ### User
@@ -28,4 +29,5 @@ AdmiDi0_pA$$w0rd
 
 ### Root:
 ```
+b8f472af33e452a2014e0f24d02b47cd
 ```
