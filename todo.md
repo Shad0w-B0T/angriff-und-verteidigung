@@ -20,3 +20,31 @@ Schauen ob hier etwas möglich ist (XSS, etc.)
 ### take-survey.heal.htb.md
 - [dirb](./unterpunkte/scanning/domains/take-survey.heal.htb.md#ergebnis-todo) -
 sobald es fertig geladen ist in den results einfügen + ergebnisse ausfüllen
+
+
+
+---
+
+
+## Inhaltsverzeichnis
+
+- [Root Access](#root-access)
+- [Hauptteil](#hauptteil)
+    - [Unterpunkt 1](#unterpunkt-1)
+    - [Unterpunkt 2](#unterpunkt-2)
+- [Testing Jump](#testing-jump)
+
+## Einleitung
+...
+
+## Hauptteil
+...
+
+### Unterpunkt 1
+...
+
+### Unterpunkt 2
+...
+
+## Fazit
+...
