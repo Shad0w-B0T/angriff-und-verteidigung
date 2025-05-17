@@ -332,6 +332,7 @@ psql -d survey -h localhost -p 5432 -U db_user -W
 ![img.png](../../../img/user-access.png)
 
 ![img.png](../../../img/user-flag.png)
+#### User flag
 ![img.png](../../../img/htb-confirmed-user-flag.png)
 - Now I can connect to ron via ssh with his credentials
 ---
