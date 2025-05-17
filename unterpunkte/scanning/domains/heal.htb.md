@@ -736,8 +736,11 @@ ron:x:1001:1001:,,,:/home/ron:/bin/bash
 
 Ergebnis:
 - Alle User ersichtlich
-  ```ralph:x:1000:1000:ralph:/home/ralph:/bin/bash```
-nochmal bestätigt, dass ralph wirklich ein User ist
+```
+ralph:x:1000:1000:ralph:/home/ralph:/bin/bash
+ron:x:1001:1001:,,,:/home/ron:/bin/bash
+```
+
 
 ```
 ralph – Username (login name)
@@ -810,7 +813,10 @@ ruby-paths.txt
 
 3. Manuell ```/app/controllers/application_controller.rb``` getestet 
 und den pfad so lange nach oben gegangen bis es bei ```../../app/controllers/application_controller.rb```
-geklappt hat
+geklappt hat 
+```
+'Path Traversal' - Fachgerechte Name
+```
 
 5. Jetzt mit ```ffuf``` (https://github.com/ffuf/ffuf) die Liste anwenden und schauen welche Pfade es gibt
    - Komisch dabei: Bei mehrfachem scannen hatte ich teilweise unterschiedliche Pfade

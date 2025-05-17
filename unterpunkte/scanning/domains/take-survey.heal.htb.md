@@ -13,13 +13,16 @@ Sobald eingetragen:
 
 ![img.png](../../../img/survey-working.png)
 
+```
+http://take-survey.heal.htb/index.php/552933?lang=en
+```
 ## Ergebnis:
 - Die Survey Seite ist in PHP geschrieben
 
 ---
 
 ## Manuelle suche
-- Pfad ausprobieren: http://take-survey.heal.htb/index.php
+- Pfad ausprobieren: http://take-survey.heal.htb/index.php ohne die Survey id
 - Admin User herausgefunden
 ![img.png](../../../img/index_php-survey.png)
 
@@ -372,5 +375,5 @@ GENERATED WORDS: 4612
 ```
 
 ## Ergebnis TODO:
-- TODO
+- http://take-survey.heal.htb/admin/ gefunden
 ---
