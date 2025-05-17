@@ -374,6 +374,13 @@ GENERATED WORDS: 4612
 ^C> Testing: http://take-survey.heal.htb/locale/en/images1 
 ```
 
-## Ergebnis TODO:
+## Ergebnis:
 - http://take-survey.heal.htb/admin/ gefunden
+
+- -> wird beim aufruf zu 
+```http://take-survey.heal.htb/index.php/admin/authentication/sa/login``` 
+weitergeleitet 
+
+
+![Survey Admin Panel](../../../img/admin-panel-website.png)
 ---

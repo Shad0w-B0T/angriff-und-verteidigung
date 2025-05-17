@@ -72,26 +72,46 @@ take-survey.heal.htb gefunden durch Button
   - Herausgefunden, dass es einen /admin pfad gibt
 
 > Ergebnis:  
+Admin Panel für die Survey  
 Ralph ist Admin für LimeSurvey
 ---
 
 
-## DB Access
+## Exploitation
+
+### DB Exploitation
 Mit den Infos von der Api Enumeration => /config/database.yml weitermachen
 
 1. [Über die LFI von der API in die config der DB geschaut](./unterpunkte/gaining-access/db-access/gaining-db-access.md#db-access)
 - Herausgefunden, dass es ```/storage/development.sqlite3``` Datei gibt
-- Herunterladen per ``curl``
+- DB herunterladen per ``curl``
 - DB anschauen
 
+2. [Hashed Passwords](./unterpunkte/gaining-access/db-access/gaining-db-access.md#hash-rausfinden)
+- Mit diversen Tools herausfinden, was für ein Hash für die PW verwendet wurde
+  - hash-identifier => nicht geklappt
+  - hashid => hat geklappt
+- [Hashcat](./unterpunkte/gaining-access/db-access/gaining-db-access.md#3-hashcat)
+  - um PW herauszufinden
 
+> Ergebnis:  
+User: Ralph  
+PW: 147258369
 
+---
 
+### Admin Panel Exploitation
+Mit dem Passwort von der DB Exploitation
 
+1. [Passwort überall ausprobieren](./unterpunkte/gaining-access/system-access/gaining-system-access.md#try-credentials)
+- mit ssh versuchen ob ich mich schon auf den server einloggen kann
+  - geht nicht
+- Admin Panel
+  - [geht](./unterpunkte/gaining-access/system-access/gaining-system-access.md#hat-geklappt)
 
-
-
-
+> Zwischenergebnis:  
+Durch eine einfache LFI bin ich in der Lage den Survey zu bearbeiten und allen
+Teilnehmenden ein Script ins Gesicht zu drücken.
 
 
 
