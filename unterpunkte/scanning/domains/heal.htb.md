@@ -1,7 +1,7 @@
 # Main Domain http://heal.htb
 
 # Nmap scan
-![nmap-scan-main.png](../../../img/nmap-scan-main.png)
+![nmap-scan-main.png](../../../screenshots/nmap-scan-main.png)
 
 Nmap:
 Command zusammengebaut mit der Hilfe von: https://www.stationx.net/nmap-cheat-sheet/
@@ -94,7 +94,7 @@ nginx[1.18.0]
 
 
 # Nikto Scan
-![nikto-scan-main.png](../../../img/nikto-scan-main.png)
+![nikto-scan-main.png](../../../screenshots/nikto-scan-main.png)
 ```
 Command:
 
@@ -168,11 +168,11 @@ DOWNLOADED: 4612 - FOUND: 2
 # BurpSuite - Requests anschauen
 Interessant weil dort Parameter zu sehen sind
 
-![Burp](../../../img/burp-suite_interesting-requests.png)
+![Burp](../../../screenshots/burp-suite_interesting-requests.png)
 
 ---
 ## GET - http://heal.htb/sockjs-node/info?t=1745497786739
-![GET_param_1.png](../../../img/GET_param_1.png)
+![GET_param_1.png](../../../screenshots/GET_param_1.png)
 ```
 Request:
 
@@ -208,7 +208,7 @@ Websocket Verbindungsaufbau:
 - Upgrade auf WS
 
 Initial über HTTP:
-![img_1.png](../../../img/websocket-request_doesnt-work.png)
+![img_1.png](../../../screenshots/websocket-request_doesnt-work.png)
 - Verbindung soll aufgebaut werden, aber die Websocket Request ist nicht valide
   - Warum?
     - t
@@ -220,7 +220,7 @@ TODO - warum hier websocket nix gehen diese????
 
 
 ## POST - http://heal.htb/sockjs-node/862/jmm2xqzl/xhr_streaming?t=1745497787461
-![POST_param_1.png](../../../img/POST_param_1.png)
+![POST_param_1.png](../../../screenshots/POST_param_1.png)
 
 ```
 Request:
@@ -239,9 +239,9 @@ Response:
 
 
 ## GET - http://heal.htb/sockjs-node/862/un0nxlzy/htmlfile?c=_jp.aqe2epm
-![GET_param_2.png](../../../img/GET_param_2.png)
+![GET_param_2.png](../../../screenshots/GET_param_2.png)
 
-![img.png](../../../img/GET-response-param-2.png)
+![img.png](../../../screenshots/GET-response-param-2.png)
 ```
 Request:
 
@@ -275,7 +275,7 @@ Response:
 #### Weiter:
 Ausprobieren ob LFI möglich ist und ich so an mehr informationen herankomme
 
-![img.png](../../../img/LFI_try.png)
+![img.png](../../../screenshots/LFI_try.png)
 
 ```
 Request:
@@ -296,18 +296,18 @@ invalid "callback" parameter
 
 # Website Enumeration
 ## Login Page
-![login-page.png](../../../img/login-page.png)
+![login-page.png](../../../screenshots/login-page.png)
 ---
 
 ## Create Account Page
 
-![img.png](../../../img/sign-up.png)
+![img.png](../../../screenshots/sign-up.png)
 
 ### Anfängliche Probleme
 - Ging anfangs nicht, weil ich vergessen hatte die IP einzutragen: siehe siehe [hier](../../scanning/domains/api.heal.htb.md#dummheit)
 
 ### Ergebnis:
-![img.png](../../../img/sign-up-data.png)
+![img.png](../../../screenshots/sign-up-data.png)
 ```
 Request:
 
@@ -366,11 +366,11 @@ Etwas auf der Seite umschauen um zu sehen, was denn alles möglich ist.
 Dabei festgestellt, dass nachdem ein Account erstellt worden ist man Daten eingeben kann und basierend auf diesen
 eine PDF Datei generiert wird und man diese exportieren kann.
 
-![img.png](../../../img/resume-builder-page.png)
+![img.png](../../../screenshots/resume-builder-page.png)
 
 
 ## Profile Page
-![img.png](../../../img/profile-button.png)
+![img.png](../../../screenshots/profile-button.png)
 
 
 ## Survey Page
@@ -383,7 +383,7 @@ eine PDF Datei generiert wird und man diese exportieren kann.
 # BurpSuite
 Mit Burp anschauen, was passiert wenn man sich die PDF generieren lässt und die Requests speichern.
 
-![img.png](../../../img/subdomain-exports-path.png)
+![img.png](../../../screenshots/subdomain-exports-path.png)
 
 ```
 Request:
@@ -639,7 +639,7 @@ x-runtime: 0.002224
   "errors":"Invalid token"
 }
 ```
-![img_1.png](../../../img/pdf-LFI-try.png)
+![img_1.png](../../../screenshots/pdf-LFI-try.png)
 - Er benötigt einen validen Token => Ich muss den Token mitschicken, welchen ich bei der Anmeldung bekommen habe
    (oder erstelle einen neuen Account und nehme diesen Token)
 
@@ -649,7 +649,7 @@ Vorgehen:
 ```eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5fQ.ILOcMzCTZe1wDWM5gXNbBYBOPpSX43bOFdIKjJfpLU8``` und füge ihn der 
 Request hinzu
 
-![img.png](../../../img/LFI-works.png)
+![img.png](../../../screenshots/LFI-works.png)
 
 ```
 Request:
@@ -829,7 +829,7 @@ ffuf  -u = HOST
       -mc= MATCH STATUS CODE
 ```
 
-![fuzzing-ruby-api-subdomain.png](../../../img/fuzzing-ruby-api-subdomain.png)
+![fuzzing-ruby-api-subdomain.png](../../../screenshots/fuzzing-ruby-api-subdomain.png)
 
 ```
 ffuf  -u http://api.heal.htb/download?filename=../../FUZZ 

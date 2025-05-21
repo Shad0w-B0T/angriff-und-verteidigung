@@ -8,7 +8,7 @@
 ```
 ssh ralph@10.10.11.46
 ```
-![img.png](../../../img/ralph-ssh-login-try.png)
+![img.png](../../../screenshots/ralph-ssh-login-try.png)
 - Wrong Login Credentials
 ---
 
@@ -20,11 +20,11 @@ take-survey.heal.htb/admin
 Username: ralph
 Password: 147258369
 ```
-![img.png](../../../img/survey-login.png)
+![img.png](../../../screenshots/survey-login.png)
 
 #### Hat geklappt:
 
-![img_1.png](../../../img/survey-admin-panel.png)
+![img_1.png](../../../screenshots/survey-admin-panel.png)
 
 ---
 
@@ -36,9 +36,9 @@ Password: 147258369
    - Zugriff auf die Survey + Editieren ist möglich
    - Script in die Survey eingebunden => Jeder der die Survey öffnet bekommt das Script ins Gesicht
 
-![survey-edit.png](../../../img/survey-edit.png)
-![survey-manipulation.png](../../../img/survey-manipulation.png)
-![survey-script-execution.png](../../../img/survey-script-execution.png)
+![survey-edit.png](../../../screenshots/survey-edit.png)
+![survey-manipulation.png](../../../screenshots/survey-manipulation.png)
+![survey-script-execution.png](../../../screenshots/survey-script-execution.png)
 ---
 
 ## Nach LimeSurvey CVE's gesucht
@@ -54,59 +54,59 @@ Das hier gefunden:
 ## Vorgehen:
 
 ### 1. PoC heruntergeladen (https://github.com/Y1LD1R1M-1337/Limesurvey-RCE/tree/main)
-![img.png](../../../img/poc-cve-folder.png)
+![img.png](../../../screenshots/poc-cve-folder.png)
 
 
 ### 2. ```php-rev.php```
 - IP und Port angepasst (Eigene IP herausgefunden mit ```ip a```)
 
-![img.png](../../../img/php-rev-shell-script.png)
+![img.png](../../../screenshots/php-rev-shell-script.png)
 
 
 
 ### 3. Create a zip file with the config and the reverse shell code
-![img.png](../../../img/zipped-rev-shell-and-config.png)
+![img.png](../../../screenshots/zipped-rev-shell-and-config.png)
 
 
 
 ### 4. Upload & Install Plugin
 
 #### 4.1 Login + go to configuration
-![img.png](../../../img/lime-configration.png)
+![img.png](../../../screenshots/lime-configration.png)
 
 #### 4.2 Under configuration navigate to the plugins
-![img_1.png](../../../img/lime-plugins.png)
+![img_1.png](../../../screenshots/lime-plugins.png)
 
 #### 4.3 Upload and install button
-![img_2.png](../../../img/lime-plugin-upload-and-install.png)
+![img_2.png](../../../screenshots/lime-plugin-upload-and-install.png)
 
 #### 4.4 Upload & Install malicious zip file
-![img.png](../../../img/lime-upload-zip.png)
+![img.png](../../../screenshots/lime-upload-zip.png)
 
 #### 4.5 Error -> Wrong Lime version
-![img.png](../../../img/wrong-lime-version.png)
+![img.png](../../../screenshots/wrong-lime-version.png)
 
 #### 4.6 Change version in config file / add version
-![img.png](../../../img/added-lime-version-in-config.png)
+![img.png](../../../screenshots/added-lime-version-in-config.png)
 
 #### 4.7 Try again -> works
-![img.png](../../../img/uploaded-zip-file.png)
+![img.png](../../../screenshots/uploaded-zip-file.png)
 
 #### 4.8 Activate Plugin
-![img.png](../../../img/activate-plugin.png)
+![img.png](../../../screenshots/activate-plugin.png)
 
 #### 4.9 Get Plugin id by hovering over the plugin
-![img.png](../../../img/plugin-id.png)
+![img.png](../../../screenshots/plugin-id.png)
 
 
 
 ### 5. ```exploit.py ```
 
 #### 5.1. Script anpassen
-![img.png](../../../img/exploit-plugin-id.png)
+![img.png](../../../screenshots/exploit-plugin-id.png)
 
 #### 5.2 Lokalen Pfad anpassen
-![img.png](../../../img/path-to-rev-shell.png)
+![img.png](../../../screenshots/path-to-rev-shell.png)
 
 #### 5.3 Listen on ```Port 1337```
 ```
@@ -116,7 +116,7 @@ nc -lvp 1337
    -v: Verbose. Provides more detailed output.
    -p: Local port to listen on.
 ```
-![img.png](../../../img/nc-listening.png)
+![img.png](../../../screenshots/nc-listening.png)
 
 #### 5.4 Exploit Datei ```exploit.py``` ausführen
 ```
@@ -124,8 +124,8 @@ python3 exploit.py URL username password port
 
 python3 exploit http://take-survey.heal.htb ralph 147258369 80
 ```
-![img.png](../../../img/exploit-execute.png)
-![img_1.png](../../../img/reverse-shell-exploit.png)
+![img.png](../../../screenshots/exploit-execute.png)
+![img_1.png](../../../screenshots/reverse-shell-exploit.png)
 
 - Hat geklappt => Reverse Shell erlangt als www-data User
 ---
@@ -137,7 +137,7 @@ python3 exploit http://take-survey.heal.htb ralph 147258369 80
 dumme shell zu einem terminal upgraden
 
 
-![img.png](../../../img/shell-enumeration.png)
+![img.png](../../../screenshots/shell-enumeration.png)
 
 ---
 ## Upgrade dumb shell to fully functional terminal to be able to enumerate better
@@ -146,16 +146,16 @@ Quelle: https://0xmrmasry.medium.com/upgrading-simple-shells-to-fully-interactiv
 ### 1. Herausfinden ob ich python für ein upgrade verwenden kann
 ```which python3```
 
-![img.png](../../../img/which-python.png)
+![img.png](../../../screenshots/which-python.png)
 
 ### 2. ```python3 -c 'import pty; pty.spawn("/bin/bash")'```
-![img.png](../../../img/get-bash.png)
+![img.png](../../../screenshots/get-bash.png)
 
 ### 3. STRG + Z um Netcat in den Hintergrund zu schicken
-![img.png](../../../img/send-nc-to-background.png)
+![img.png](../../../screenshots/send-nc-to-background.png)
 
 ### 4. Terminal auf raw setzen und die Eingabe weiterleiten + danach Netcat wieder in den vordergrund holen
-![img.png](../../../img/upgrade-shell-to-terminal.png)
+![img.png](../../../screenshots/upgrade-shell-to-terminal.png)
 ```
 stty raw -echo;fg
 
@@ -170,7 +170,7 @@ fg (foreground):
 ```
 
 ### 5. Arrow keys and TAB work but 'clear' doesn't
-![img.png](../../../img/terminal-clear-does-not-work.png)
+![img.png](../../../screenshots/terminal-clear-does-not-work.png)
 
 Herausfinden, welches Terminal ich benutze:
 ```
@@ -181,16 +181,16 @@ Result:
 
 xterm-256color
 ```
-![img.png](../../../img/standard-terminal.png)
+![img.png](../../../screenshots/standard-terminal.png)
 
 Anschließend das Terminal setzen
 ```
 export TERM=xterm-256color
 ```
-![img_1.png](../../../img/export-terminal.png)
+![img_1.png](../../../screenshots/export-terminal.png)
 
 ### 6. TAB, Arrow keys, Auto completion works
-![fully-functional-terminal.png](../../../img/fully-functional-terminal.png)
+![fully-functional-terminal.png](../../../screenshots/fully-functional-terminal.png)
 
 ---
 
@@ -201,7 +201,7 @@ export TERM=xterm-256color
 ```
 sudo -l
 ```
-![img.png](../../../img/www-data-sudo.png)
+![img.png](../../../screenshots/www-data-sudo.png)
 
 Geht nicht, da ich das Passwort nicht habe.
 
@@ -209,7 +209,7 @@ Geht nicht, da ich das Passwort nicht habe.
 ```
 cat /etc/passwd | grep 'sh$'
 ```
-![users-with-bash.png](../../../img/users-with-bash.png)
+![users-with-bash.png](../../../screenshots/users-with-bash.png)
 
 ```
 root:x:0:0:root:/root:/bin/bash
@@ -227,15 +227,15 @@ Es gibt 3 User mit einer shell:
 1. Ralph und Ron:
 - haben ein Home Verzeichnis
 
-![img.png](../../../img/home-dir-no-access-as-www-data-user.png)
+![img.png](../../../screenshots/home-dir-no-access-as-www-data-user.png)
 
 Ich habe keinen Zugriff auf deren Home Verzeichnisse.
 
 2. Postgres User:
 
-![img.png](../../../img/postgres-directory.png)
+![img.png](../../../screenshots/postgres-directory.png)
 
-![postgres-main-denied.png](../../../img/postgres-main-denied.png)
+![postgres-main-denied.png](../../../screenshots/postgres-main-denied.png)
 
 Kein Zugriff auf die Postgres Verzeichnisse.
 
@@ -247,42 +247,42 @@ https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS
 
 1. ```/tmp``` alle rechte
 
-![img.png](../../../img/temp-dir-all-rights.png)
+![img.png](../../../screenshots/temp-dir-all-rights.png)
 
 2. Schreibe/Lese Rechte 
 
-![img.png](../../../img/temp-access.png)
+![img.png](../../../screenshots/temp-access.png)
 
 3. HTTP Server über Python hochfahren und das linpeas script bereitstellen
 
-![img.png](../../../img/python-http-server.png)
+![img.png](../../../screenshots/python-http-server.png)
 
 4. linpeas script von Server herunterladen
 
-![img.png](../../../img/linpeas-script-download.png)
+![img.png](../../../screenshots/linpeas-script-download.png)
 
 5. Execute Rechte hinzufügen
 ```
 chmod +x linpeas.sh
 ```
-![img.png](../../../img/linpeas-add-execute-rights.png)
+![img.png](../../../screenshots/linpeas-add-execute-rights.png)
 
 
 ### Linpeas ausführen und auswerten
 
 #### 1. System Infos
-![img.png](../../../img/linpeas-system-infos.png)
+![img.png](../../../screenshots/linpeas-system-infos.png)
 
 #### 2. Linux Exploit Suggestions
-![img.png](../../../img/linpeas-exploit-suggestion.png)
+![img.png](../../../screenshots/linpeas-exploit-suggestion.png)
 
 #### 3. Cron Jobs
-![img.png](../../../img/cron-jobs.png)
+![img.png](../../../screenshots/cron-jobs.png)
 
 #### 4. Active Ports
 - Interesting because of the new Ports
 
-![linpeas-active-ports.png](../../../img/linpeas-active-ports.png)
+![linpeas-active-ports.png](../../../screenshots/linpeas-active-ports.png)
 
 1. Search how to access internal ports from outside
    - ssh local port forwarding 
@@ -294,24 +294,24 @@ chmod +x linpeas.sh
 3. Get User access first
 
 #### 5. Useful software / installed compilers
-![img.png](../../../img/linpeas-useful-software.png)
+![img.png](../../../screenshots/linpeas-useful-software.png)
 
 #### 6. PostgreSQL Files
-![img.png](../../../img/postgresql-files.png)
+![img.png](../../../screenshots/postgresql-files.png)
 
 #### 6. Found config files with password
 
-![img_1.png](../../../img/linpeas-config-password-found.png)
+![img_1.png](../../../screenshots/linpeas-config-password-found.png)
 
 - Inside the config file:
-![img.png](../../../img/detailed-config-file.png)
+![img.png](../../../screenshots/detailed-config-file.png)
 
 
 
 ### Newly found password usage
 
 #### 1. Try in db
-![img_1.png](../../../img/ask-psql-installed.png)
+![img_1.png](../../../screenshots/ask-psql-installed.png)
 
 ```
 psql -d survey -h localhost -p 5432 -U db_user -W
@@ -322,18 +322,18 @@ psql -d survey -h localhost -p 5432 -U db_user -W
     -U = USER
     -W = Connect via password
 ```
-![img_2.png](../../../img/psql-db-access.png)
+![img_2.png](../../../screenshots/psql-db-access.png)
 - Nothing of value to get user access
 
 
 #### 2. Try Passwords with other Users
 - Ron works
 
-![img.png](../../../img/user-access.png)
+![img.png](../../../screenshots/user-access.png)
 
-![img.png](../../../img/user-flag.png)
+![img.png](../../../screenshots/user-flag.png)
 #### User flag
-![img.png](../../../img/htb-confirmed-user-flag.png)
+![img.png](../../../screenshots/htb-confirmed-user-flag.png)
 - Now I can connect to ron via ssh with his credentials
 ---
 

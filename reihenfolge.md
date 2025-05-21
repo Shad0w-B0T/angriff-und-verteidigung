@@ -111,8 +111,9 @@ Mit dem Passwort von der DB Exploitation
   - [geht](./unterpunkte/gaining-access/system-access/gaining-system-access.md#hat-geklappt)
 
 
-<strong>OPTIONAL (Fragen ob das hier Sinn macht?)</strong>
-```
+
+----- !!! DAS HIER MACHT SINN UND ICH SOLL ES REINNEHMEN !!! -----
+
 Admin Panel (LimeSurvey) Enumeration
 1. [LimeSurvey Enumeration](./unterpunkte/gaining-access/system-access/gaining-system-access.md#admin-panel-enumeration)
 - herausgefunden, dass ich code in die offene survey eintragen kann, der dann von jedem ausgeführt wird
@@ -123,7 +124,7 @@ siehe [Gefahren durch LFI](./unterpunkte/gaining-access/system-access/gaining-sy
 > Ergebnis:  
 Durch eine einfache LFI bin ich in der Lage den Survey zu bearbeiten und allen
 Teilnehmenden ein Script ins Gesicht zu drücken.
-```
+
 
 
 

@@ -2,16 +2,16 @@
 
 Unter dem Punkt 'Survey' wird man weitergeleitet auf: http://heal.htb/survey
 
-![img.png](../../../img/survey-site.png)
+![img.png](../../../screenshots/survey-site.png)
 
 Sobald man auf 'Take the survey' klickt wird man auf eine weitere Subdomain weitergeleitet, welche man wieder in die
 <code>/etc/hosts</code> eintragen muss
 
-![survey-error-site.png](../../../img/survey-error-site.png)
+![survey-error-site.png](../../../screenshots/survey-error-site.png)
 
 Sobald eingetragen:
 
-![img.png](../../../img/survey-working.png)
+![img.png](../../../screenshots/survey-working.png)
 
 ```
 http://take-survey.heal.htb/index.php/552933?lang=en
@@ -24,7 +24,7 @@ http://take-survey.heal.htb/index.php/552933?lang=en
 ## Manuelle suche
 - Pfad ausprobieren: http://take-survey.heal.htb/index.php ohne die Survey id
 - Admin User herausgefunden
-![img.png](../../../img/index_php-survey.png)
+![img.png](../../../screenshots/index_php-survey.png)
 
 ---
 
@@ -61,7 +61,7 @@ nginx[1.18.0]
 
 # Nikto Scan http://take-survey.heal.htb
 
-![img.png](../../../img/nikto-scan-take_survey.png)
+![img.png](../../../screenshots/nikto-scan-take_survey.png)
 ```
 Command:
 
@@ -382,5 +382,5 @@ GENERATED WORDS: 4612
 weitergeleitet 
 
 
-![Survey Admin Panel](../../../img/admin-panel-website.png)
+![Survey Admin Panel](../../../screenshots/admin-panel-website.png)
 ---

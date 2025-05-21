@@ -1,7 +1,7 @@
 # Root Access
 
 ## Active Ports with User
-![linpeas-active-ports.png](../../../img/linpeas-active-ports.png)
+![linpeas-active-ports.png](../../../screenshots/linpeas-active-ports.png)
 
 ### Local Port Forwarding
 Forward the internal ports on the server to my local machine to see the data in my Browser
@@ -10,12 +10,12 @@ ssh -L 1337:127.0.0.1:8500 ron@heal.htb
 
 ssh -L <LOCAL PORT>:<REMOTE IP>:<REMOTE PORT> <USER>@<SERVER>
 ```
-![img.png](../../../img/ssh-local-port-forwarding.png)
+![img.png](../../../screenshots/ssh-local-port-forwarding.png)
 - Try with every port
 - Only response on port 8500
 
 
-![img.png](../../../img/consul-webapp-version.png)
+![img.png](../../../screenshots/consul-webapp-version.png)
 ---
 
 ### Enumerate Consul
@@ -28,11 +28,11 @@ ssh -L <LOCAL PORT>:<REMOTE IP>:<REMOTE PORT> <USER>@<SERVER>
 
 1. Listen on Port 7331
 
-![listening-port-consul.png](../../../img/listening-port-consul.png)
+![listening-port-consul.png](../../../screenshots/listening-port-consul.png)
 
 2. Execute Script
 
-![consul-script.png](../../../img/consul-script.png)
+![consul-script.png](../../../screenshots/consul-script.png)
 - ACL Token missing
 
 #### 3. Try to get ACL Token
@@ -44,11 +44,11 @@ find /etc /opt /usr /var -type f -iname "*consul*" 2>/dev/null
     -iname:         filename includes (case insensitive)
     -2>/dev/null:   suppresses errors by redirecting stderr to /dev/null
 ```
-![find-consul.png](../../../img/find-consul.png)
+![find-consul.png](../../../screenshots/find-consul.png)
 
 - Found config dir for consul
 
-![consul-directories.png](../../../img/consul-directories.png)
+![consul-directories.png](../../../screenshots/consul-directories.png)
 
 ```
 {
@@ -77,7 +77,7 @@ Default acl policy is allow
 Problem:
   - When ```acl_default_policy": "allow"``` is set, any token without explicit permissions will still be granted access by default
 
-![consul-acl-token-allow-policy.png](../../../img/consul-acl-token-allow-policy.png)
+![consul-acl-token-allow-policy.png](../../../screenshots/consul-acl-token-allow-policy.png)
 
 <strong>=> I don't need an ACL Token</strong>
 
@@ -109,25 +109,30 @@ except:
 
 1. Listen to port 7331 again
 
-![listening-port-consul.png](../../../img/listening-port-consul.png)
+![listening-port-consul.png](../../../screenshots/listening-port-consul.png)
 
 2. Execute the adjusted script
 
-![img.png](../../../img/working-consul-exploit-script.png)
+![img.png](../../../screenshots/working-consul-exploit-script.png)
 
 3. Agent registered new service
-![img.png](../../../img/new-service-created.png)
+![img.png](../../../screenshots/new-service-created.png)
 
 4. Root reverse shell connection
-![img.png](../../../img/root-rev-shell.png)
+![img.png](../../../screenshots/root-rev-shell.png)
 
 5. Take root flag
-![img.png](../../../img/root-flag.png)
+![img.png](../../../screenshots/root-flag.png)
 
 
 ---
 
 ### Root Flag
-![img.png](../../../img/heal-pwned.png)
+![img.png](../../../screenshots/heal-pwned.png)
 
+---
+
+---
+Für Präsentation:
+![img.png](img.png)
 ---
