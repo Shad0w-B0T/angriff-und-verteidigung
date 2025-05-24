@@ -168,11 +168,11 @@ DOWNLOADED: 4612 - FOUND: 2
 # BurpSuite - Requests anschauen
 Interessant weil dort Parameter zu sehen sind
 
-![Burp](../../../screenshots/burp-suite_interesting-requests.png)
+![Burp](../../../img/burpsuite-websocket-requests.png)
 
 ---
 ## GET - http://heal.htb/sockjs-node/info?t=1745497786739
-![GET_param_1.png](../../../screenshots/GET_param_1.png)
+![GET_param_1.png](../../../img/GET_param_1.png)
 ```
 Request:
 
@@ -208,7 +208,7 @@ Websocket Verbindungsaufbau:
 - Upgrade auf WS
 
 Initial über HTTP:
-![img_1.png](../../../screenshots/websocket-request_doesnt-work.png)
+![img_1.png](../../../img/websocket-request_doesnt-work.png)
 - Verbindung soll aufgebaut werden, aber die Websocket Request ist nicht valide
   - Warum?
     - t
@@ -239,7 +239,7 @@ Response:
 
 
 ## GET - http://heal.htb/sockjs-node/862/un0nxlzy/htmlfile?c=_jp.aqe2epm
-![GET_param_2.png](../../../screenshots/GET_param_2.png)
+![GET_param_2.png](../../../img/GET_param_2.png)
 
 ![img.png](../../../screenshots/GET-response-param-2.png)
 ```
@@ -296,7 +296,7 @@ invalid "callback" parameter
 
 # Website Enumeration
 ## Login Page
-![login-page.png](../../../screenshots/login-page.png)
+![login-page.png](../../../img/login-page.png)
 ---
 
 ## Create Account Page
