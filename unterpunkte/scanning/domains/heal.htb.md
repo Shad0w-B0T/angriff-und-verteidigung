@@ -241,7 +241,7 @@ Response:
 ## GET - http://heal.htb/sockjs-node/862/un0nxlzy/htmlfile?c=_jp.aqe2epm
 ![GET_param_2.png](../../../img/GET_param_2.png)
 
-![img.png](../../../screenshots/GET-response-param-2.png)
+![img.png](../../../img/GET-response-param-2.png)
 ```
 Request:
 
@@ -275,7 +275,7 @@ Response:
 #### Weiter:
 Ausprobieren ob LFI möglich ist und ich so an mehr informationen herankomme
 
-![img.png](../../../screenshots/LFI_try.png)
+![img.png](../../../img/LFI_try.png)
 
 ```
 Request:
@@ -307,7 +307,7 @@ invalid "callback" parameter
 - Ging anfangs nicht, weil ich vergessen hatte die IP einzutragen: siehe siehe [hier](../../scanning/domains/api.heal.htb.md#dummheit)
 
 ### Ergebnis:
-![img.png](../../../screenshots/sign-up-data.png)
+![img.png](../../../img/sign-up-data.png)
 ```
 Request:
 
@@ -366,11 +366,11 @@ Etwas auf der Seite umschauen um zu sehen, was denn alles möglich ist.
 Dabei festgestellt, dass nachdem ein Account erstellt worden ist man Daten eingeben kann und basierend auf diesen
 eine PDF Datei generiert wird und man diese exportieren kann.
 
-![img.png](../../../screenshots/resume-builder-page.png)
+![img.png](../../../img/resume-builder-page.png)
 
 
 ## Profile Page
-![img.png](../../../screenshots/profile-button.png)
+![img.png](../../../img/profile-button.png)
 
 
 ## Survey Page

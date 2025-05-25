@@ -2,16 +2,16 @@
 
 Unter dem Punkt 'Survey' wird man weitergeleitet auf: http://heal.htb/survey
 
-![img.png](../../../screenshots/survey-site.png)
+![img.png](../../../img/survey-site.png)
 
 Sobald man auf 'Take the survey' klickt wird man auf eine weitere Subdomain weitergeleitet, welche man wieder in die
 <code>/etc/hosts</code> eintragen muss
 
-![survey-error-site.png](../../../screenshots/survey-error-site.png)
+![survey-error-site.png](../../../img/survey-error-site.png)
 
 Sobald eingetragen:
 
-![img.png](../../../screenshots/survey-working.png)
+![img.png](../../../img/survey-working.png)
 
 ```
 http://take-survey.heal.htb/index.php/552933?lang=en

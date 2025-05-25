@@ -1,7 +1,7 @@
 # Subdomain http://api.heal.htb
 
 Gefunden anhand von BurpSuite
-![img.png](../../../screenshots/api-heal-htb.png)
+![img.png](../../../img/api-heal-htb.png)
 
 ## Dummheit
 Ich habe den api.heal.htb Pfad relativ früh bei BurpSuite bemerkt, jedoch habe
