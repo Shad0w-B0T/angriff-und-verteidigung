@@ -110,7 +110,7 @@ DOWNLOADED: 4612 - FOUND: 4
 ---
 
 # Website Enumeration
-![img_1.png](../../../screenshots/subdomain-techstack.png)
+![img_1.png](../../../img/subdomain-techstack.png)
 
 ## Ergebnis:
 - Ruby version: ruby 3.3.5 (2024-09-03 revision ef084cc8f4) [x86_64-linux]
@@ -120,7 +120,7 @@ DOWNLOADED: 4612 - FOUND: 4
 # BurpSuite
 Mit Burp anschauen, was passiert wenn man sich die PDF generieren lässt und die Requests speichern.
 
-![img.png](../../../screenshots/subdomain-exports-path.png)
+![img.png](../../../img/subdomain-exports-path.png)
 
 ```
 Request:
@@ -376,7 +376,7 @@ x-runtime: 0.002224
   "errors":"Invalid token"
 }
 ```
-![img_1.png](../../../screenshots/pdf-LFI-try.png)
+![img_1.png](../../../img/pdf-LFI-try.png)
 - Er benötigt einen validen Token => Ich muss den Token mitschicken, welchen ich bei der Anmeldung bekommen habe
   (oder erstelle einen neuen Account und nehme diesen Token)
 
@@ -386,7 +386,7 @@ Vorgehen:
   ```eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5fQ.ILOcMzCTZe1wDWM5gXNbBYBOPpSX43bOFdIKjJfpLU8``` und füge ihn der
   Request hinzu
 
-![img.png](../../../screenshots/LFI-works.png)
+![img.png](../../../img/LFI-works.png)
 
 ```
 Request:
@@ -566,7 +566,7 @@ ffuf  -u = HOST
       -mc= MATCH STATUS CODE
 ```
 
-![fuzzing-ruby-api-subdomain.png](../../../screenshots/fuzzing-ruby-api-subdomain.png)
+![fuzzing-ruby-api-subdomain.png](../../../img/fuzzing-ruby-api-subdomain.png)
 
 ```
 ffuf  -u http://api.heal.htb/download?filename=../../FUZZ 
