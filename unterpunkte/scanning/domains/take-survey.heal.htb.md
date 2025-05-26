@@ -24,7 +24,7 @@ http://take-survey.heal.htb/index.php/552933?lang=en
 ## Manuelle suche
 - Pfad ausprobieren: http://take-survey.heal.htb/index.php ohne die Survey id
 - Admin User herausgefunden
-![img.png](../../../screenshots/index_php-survey.png)
+![img.png](../../../img/index_php-survey.png)
 
 ---
 
@@ -382,5 +382,5 @@ GENERATED WORDS: 4612
 weitergeleitet 
 
 
-![Survey Admin Panel](../../../screenshots/admin-panel-website.png)
+![Survey Admin Panel](../../../img/admin-panel-website.png)
 ---
