@@ -1,14 +1,14 @@
 # System Access
 
 ## Try Credentials
-[User ralph access](../db-access/gaining-db-access.md#3-hashcat)
+[User ralph access](../db-access_DONE/gaining-db-access.md#3-hashcat)
 
 ### 1. SSH Login try
 
 ```
 ssh ralph@10.10.11.46
 ```
-![img.png](../../../screenshots/ralph-ssh-login-try.png)
+![img.png](../../../img/ssh-login-try.png)
 - Wrong Login Credentials
 ---
 
@@ -20,11 +20,11 @@ take-survey.heal.htb/admin
 Username: ralph
 Password: 147258369
 ```
-![img.png](../../../screenshots/survey-login.png)
+![img.png](../../../img/survey-login.png)
 
 #### Hat geklappt:
 
-![img_1.png](../../../screenshots/survey-admin-panel.png)
+![img_1.png](../../../img/survey-admin-panel.png)
 
 ---
 
@@ -36,9 +36,9 @@ Password: 147258369
    - Zugriff auf die Survey + Editieren ist möglich
    - Script in die Survey eingebunden => Jeder der die Survey öffnet bekommt das Script ins Gesicht
 
-![survey-edit.png](../../../screenshots/survey-edit.png)
-![survey-manipulation.png](../../../screenshots/survey-manipulation.png)
-![survey-script-execution.png](../../../screenshots/survey-script-execution.png)
+![survey-edit.png](../../../img/survey-edit.png)
+![survey-manipulation.png](../../../img/survey-manipulation.png)
+![survey-script-execution.png](../../../img/survey-script-execution.png)
 ---
 
 ## Nach LimeSurvey CVE's gesucht

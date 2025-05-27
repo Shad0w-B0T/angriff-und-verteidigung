@@ -304,7 +304,7 @@ invalid "callback" parameter
 ![img.png](../../../screenshots/sign-up.png)
 
 ### Anfängliche Probleme
-- Ging anfangs nicht, weil ich vergessen hatte die IP einzutragen: siehe siehe [hier](../../scanning/domains/api.heal.htb.md#dummheit)
+- Ging anfangs nicht, weil ich vergessen hatte die IP einzutragen: siehe siehe [hier](../domains/api.heal.htb.md#dummheit)
 
 ### Ergebnis:
 ![img.png](../../../img/sign-up-data.png)
