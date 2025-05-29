@@ -54,59 +54,59 @@ Das hier gefunden:
 ## Vorgehen:
 
 ### 1. PoC heruntergeladen (https://github.com/Y1LD1R1M-1337/Limesurvey-RCE/tree/main)
-![img.png](../../../screenshots/poc-cve-folder.png)
+![img.png](../../../img/poc-cve-folder.png)
 
 
 ### 2. ```php-rev.php```
 - IP und Port angepasst (Eigene IP herausgefunden mit ```ip a```)
 
-![img.png](../../../screenshots/php-rev-shell-script.png)
+![img.png](../../../img/php-rev-shell-script.png)
 
 
 
 ### 3. Create a zip file with the config and the reverse shell code
-![img.png](../../../screenshots/zipped-rev-shell-and-config.png)
+![img.png](../../../img/zipped-rev-shell-and-config.png)
 
 
 
 ### 4. Upload & Install Plugin
 
 #### 4.1 Login + go to configuration
-![img.png](../../../screenshots/lime-configration.png)
+![img.png](../../../img/lime-configration.png)
 
 #### 4.2 Under configuration navigate to the plugins
-![img_1.png](../../../screenshots/lime-plugins.png)
+![img_1.png](../../../img/lime-plugins.png)
 
 #### 4.3 Upload and install button
-![img_2.png](../../../screenshots/lime-plugin-upload-and-install.png)
+![img_2.png](../../../img/lime-plugin-upload-and-install.png)
 
 #### 4.4 Upload & Install malicious zip file
-![img.png](../../../screenshots/lime-upload-zip.png)
+![img.png](../../../img/lime-upload-zip.png)
 
 #### 4.5 Error -> Wrong Lime version
-![img.png](../../../screenshots/wrong-lime-version.png)
+![img.png](../../../img/wrong-lime-version.png)
 
 #### 4.6 Change version in config file / add version
-![img.png](../../../screenshots/added-lime-version-in-config.png)
+![img.png](../../../img/added-lime-version-in-config.png)
 
 #### 4.7 Try again -> works
-![img.png](../../../screenshots/uploaded-zip-file.png)
+![img.png](../../../img/uploaded-zip-file.png)
 
 #### 4.8 Activate Plugin
-![img.png](../../../screenshots/activate-plugin.png)
+![img.png](../../../img/activate-plugin.png)
 
 #### 4.9 Get Plugin id by hovering over the plugin
-![img.png](../../../screenshots/plugin-id.png)
+![img.png](../../../img/plugin-id.png)
 
 
 
 ### 5. ```exploit.py ```
 
 #### 5.1. Script anpassen
-![img.png](../../../screenshots/exploit-plugin-id.png)
+![img.png](../../../img/exploit-plugin-id.png)
 
 #### 5.2 Lokalen Pfad anpassen
-![img.png](../../../screenshots/path-to-rev-shell.png)
+![img.png](../../../img/path-to-rev-shell.png)
 
 #### 5.3 Listen on ```Port 1337```
 ```
@@ -116,7 +116,7 @@ nc -lvp 1337
    -v: Verbose. Provides more detailed output.
    -p: Local port to listen on.
 ```
-![img.png](../../../screenshots/nc-listening.png)
+![img.png](../../../img/nc-listening.png)
 
 #### 5.4 Exploit Datei ```exploit.py``` ausführen
 ```
@@ -124,8 +124,8 @@ python3 exploit.py URL username password port
 
 python3 exploit http://take-survey.heal.htb ralph 147258369 80
 ```
-![img.png](../../../screenshots/exploit-execute.png)
-![img_1.png](../../../screenshots/reverse-shell-exploit.png)
+![img.png](../../../img/exploit-execute.png)
+![img_1.png](../../../img/reverse-shell-exploit.png)
 
 - Hat geklappt => Reverse Shell erlangt als www-data User
 ---
@@ -137,7 +137,7 @@ python3 exploit http://take-survey.heal.htb ralph 147258369 80
 dumme shell zu einem terminal upgraden
 
 
-![img.png](../../../screenshots/shell-enumeration.png)
+![img.png](../../../img/shell-enumeration.png)
 
 ---
 ## Upgrade dumb shell to fully functional terminal to be able to enumerate better
@@ -146,16 +146,16 @@ Quelle: https://0xmrmasry.medium.com/upgrading-simple-shells-to-fully-interactiv
 ### 1. Herausfinden ob ich python für ein upgrade verwenden kann
 ```which python3```
 
-![img.png](../../../screenshots/which-python.png)
+![img.png](../../../img/which-python.png)
 
 ### 2. ```python3 -c 'import pty; pty.spawn("/bin/bash")'```
-![img.png](../../../screenshots/get-bash.png)
+![img.png](../../../img/get-bash.png)
 
 ### 3. STRG + Z um Netcat in den Hintergrund zu schicken
-![img.png](../../../screenshots/send-nc-to-background.png)
+![img.png](../../../img/send-nc-to-background.png)
 
 ### 4. Terminal auf raw setzen und die Eingabe weiterleiten + danach Netcat wieder in den vordergrund holen
-![img.png](../../../screenshots/upgrade-shell-to-terminal.png)
+![img.png](../../../img/upgrade-shell-to-terminal.png)
 ```
 stty raw -echo;fg
 
