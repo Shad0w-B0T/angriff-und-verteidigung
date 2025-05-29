@@ -8,25 +8,25 @@ https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS
 
 1. ```/tmp``` alle rechte
 
-![img.png](../../../screenshots/temp-dir-all-rights.png)
+![img.png](../../../img/temp-dir-all-rights.png)
 
 2. Schreibe/Lese Rechte
 
-![img.png](../../../screenshots/temp-access.png)
+![img.png](../../../img/temp-access.png)
 
 3. HTTP Server über Python hochfahren und das linpeas script bereitstellen
 
-![img.png](../../../screenshots/python-http-server.png)
+![img.png](../../../img/python-http-server.png)
 
 4. linpeas script von Server herunterladen
 
-![img.png](../../../screenshots/linpeas-script-download.png)
+![img.png](../../../img/linpeas-script-download.png)
 
 5. Execute Rechte hinzufügen
 ```
 chmod +x linpeas.sh
 ```
-![img.png](../../../screenshots/linpeas-add-execute-rights.png)
+![img.png](../../../img/linpeas-add-execute-rights.png)
 
 
 ### Linpeas ausführen und auswerten
@@ -43,7 +43,7 @@ chmod +x linpeas.sh
 #### 4. Active Ports
 - Interesting because of the new Ports
 
-![linpeas-active-ports.png](../../../screenshots/linpeas-active-ports.png)
+![linpeas-active-ports.png](../../../img/linpeas-active-ports.png)
 
 1. Search how to access internal ports from outside
     - ssh local port forwarding
@@ -62,7 +62,7 @@ chmod +x linpeas.sh
 
 #### 6. Found config files with password
 
-![img_1.png](../../../screenshots/linpeas-config-password-found.png)
+![img_1.png](../../../img/linpeas-config-password-found.png)
 
 - Inside the config file:
   ![img.png](../../../screenshots/detailed-config-file.png)
@@ -92,8 +92,8 @@ psql -d survey -h localhost -p 5432 -U db_user -W
 
 ![img.png](../../../screenshots/user-access.png)
 
-![img.png](../../../screenshots/user-flag.png)
+![img.png](../../../img/user-flag.png)
 #### User flag
-![img.png](../../../screenshots/htb-confirmed-user-flag.png)
+![img.png](../../../img/htb-submit-user-flag.png)
 - Now I can connect to ron via ssh with his credentials
 ---

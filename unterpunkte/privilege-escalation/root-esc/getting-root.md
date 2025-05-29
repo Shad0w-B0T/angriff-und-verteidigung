@@ -1,7 +1,7 @@
 # Root Access
 
 ## Active Ports with User
-![linpeas-active-ports.png](../../../screenshots/linpeas-active-ports.png)
+![linpeas-active-ports.png](../../../img/linpeas-active-ports.png)
 
 ### Local Port Forwarding
 Forward the internal ports on the server to my local machine to see the data in my Browser
