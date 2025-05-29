@@ -1,7 +1,7 @@
 # System Access
 
 ## Try Credentials
-[User ralph access](../db-access_DONE/gaining-db-access.md#3-hashcat)
+[User ralph access](../db-access/gaining-db-access.md#3-hashcat)
 
 ### 1. SSH Login try
 
@@ -338,7 +338,7 @@ psql -d survey -h localhost -p 5432 -U db_user -W
 ---
 
 
-# [Getting Root](../../priviledge-escalation/root-esc/getting-root.md)
+# [Getting Root](../../privilege-escalation/root-esc/getting-root.md)
 
 
 ---

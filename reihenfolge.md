@@ -2,51 +2,16 @@
 
 ## Initial Enumeration - DONE
 
-## Exploitation
-
-### Admin Panel Exploitation
-Mit dem Passwort von der DB Exploitation
-
-1. [Passwort überall ausprobieren](./unterpunkte/gaining-access/system-access/gaining-system-access.md#try-credentials)
-- mit ssh versuchen ob ich mich schon auf den server einloggen kann
-  - geht nicht
-- Admin Panel
-  - [geht](./unterpunkte/gaining-access/system-access/gaining-system-access.md#hat-geklappt)
-
-
-
------ !!! DAS HIER MACHT SINN UND ICH SOLL ES REINNEHMEN !!! -----
-
-Admin Panel (LimeSurvey) Enumeration
-1. [LimeSurvey Enumeration](./unterpunkte/gaining-access/system-access/gaining-system-access.md#admin-panel-enumeration)
-- herausgefunden, dass ich code in die offene survey eintragen kann, der dann von jedem ausgeführt wird
-der an der umfrage teilnimmt
-  
-siehe [Gefahren durch LFI](./unterpunkte/gaining-access/system-access/gaining-system-access.md#gefahren-durch-den-zugriff-auf-das-admin-panel)
-
-> Ergebnis:  
-Durch eine einfache LFI bin ich in der Lage den Survey zu bearbeiten und allen
-Teilnehmenden ein Script ins Gesicht zu drücken.
-
-
-
-
-2. [Nach CVE suchen](./unterpunkte/gaining-access/system-access/gaining-system-access.md#nach-limesurvey-cves-gesucht)
-- etwas gefunden für rev shell => Code herunterladen, anpassen ausführen und ab ins System
-
-> Ergebnis:  
-Reverse shell
-
----
+## Exploitation - DONE
 
 ### First unprivileged shell
-1. [Unprivileged Shell](./unterpunkte/gaining-access/system-access/gaining-system-access.md#reverse-shell)
+1. [Unprivileged Shell](unterpunkte/gaining-access_DONE/system-access/gaining-system-access.md#reverse-shell)
 
-2. [Upgrade to Terminal](./unterpunkte/gaining-access/system-access/gaining-system-access.md#upgrade-dumb-shell-to-fully-functional-terminal-to-be-able-to-enumerate-better)
+2. [Upgrade to Terminal](unterpunkte/gaining-access_DONE/system-access/gaining-system-access.md#upgrade-dumb-shell-to-fully-functional-terminal-to-be-able-to-enumerate-better)
 
-3. [Shell enumeration](./unterpunkte/gaining-access/system-access/gaining-system-access.md#continue-enumeration)
+3. [Shell enumeration](unterpunkte/gaining-access_DONE/system-access/gaining-system-access.md#continue-enumeration)
 
-4. [Linpeas Script herunterladen + auswerten](./unterpunkte/gaining-access/system-access/gaining-system-access.md#linpeas)
+4. [Linpeas Script herunterladen + auswerten](unterpunkte/gaining-access_DONE/system-access/gaining-system-access.md#linpeas)
 
 > Ergebnis:  
 > 1. Terminal mit kaum rechten  
@@ -63,19 +28,19 @@ Reverse shell
 ## Privilege Escalation 
 
 ### Getting user access
-1. [Try newly found pw everywhere](./unterpunkte/gaining-access/system-access/gaining-system-access.md#newly-found-password-usage)
+1. [Try newly found pw everywhere](unterpunkte/gaining-access_DONE/system-access/gaining-system-access.md#newly-found-password-usage)
 - switch user root => nope
 - switch user ralph => nope
 - switch user ron => yep 
-  - [User flag](./unterpunkte/gaining-access/system-access/gaining-system-access.md#user-flag)
+  - [User flag](unterpunkte/gaining-access_DONE/system-access/gaining-system-access.md#user-flag)
 
 ---
 
 ### Getting root access
-1. [Remember internal ports from linpeas script](./unterpunkte/priviledge-escalation/root-esc/getting-root.md#active-ports-with-user)
+1. [Remember internal ports from linpeas script](unterpunkte/privilege-escalation/root-esc/getting-root.md#active-ports-with-user)
 - Local Port Forwarding via ssh
 
-2. [Found new tool "consul"](./unterpunkte/priviledge-escalation/root-esc/getting-root.md#enumerate-consul)
+2. [Found new tool "consul"](unterpunkte/privilege-escalation/root-esc/getting-root.md#enumerate-consul)
 - Check for CVE's
 - use script -> didnt work because didnt have acl token
 - search for acl token
@@ -84,7 +49,7 @@ Reverse shell
 - adjust script
 - => BOOM ROOT
 
-3. [Root flag](./unterpunkte/priviledge-escalation/root-esc/getting-root.md#root-flag)
+3. [Root flag](unterpunkte/privilege-escalation/root-esc/getting-root.md#root-flag)
 
 
 
