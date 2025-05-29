@@ -201,7 +201,7 @@ export TERM=xterm-256color
 ```
 sudo -l
 ```
-![img.png](../../../screenshots/www-data-sudo.png)
+![img.png](../../../img/www-data-sudo.png)
 
 Geht nicht, da ich das Passwort nicht habe.
 
@@ -227,7 +227,7 @@ Es gibt 3 User mit einer shell:
 1. Ralph und Ron:
 - haben ein Home Verzeichnis
 
-![img.png](../../../screenshots/home-dir-no-access-as-www-data-user.png)
+![img.png](../../../img/home-dir-no-access-as-www-data-user.png)
 
 Ich habe keinen Zugriff auf deren Home Verzeichnisse.
 
