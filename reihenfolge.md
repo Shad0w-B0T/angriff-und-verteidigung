@@ -4,27 +4,6 @@
 
 ## Exploitation
 
-### DB Exploitation (anhand von LFI)
-Mit den Infos von der Api Enumeration => /config/database.yml weitermachen
-
-1. [Über die LFI von der API in die config der DB geschaut](unterpunkte/gaining-access/db-access_DONE/gaining-db-access.md#db-access)
-- Herausgefunden, dass es ```/storage/development.sqlite3``` Datei gibt
-- DB herunterladen per ``curl``
-- DB anschauen
-
-2. [Hashed Passwords](unterpunkte/gaining-access/db-access_DONE/gaining-db-access.md#hash-rausfinden)
-- Mit diversen Tools herausfinden, was für ein Hash für die PW verwendet wurde
-  - hash-identifier => nicht geklappt
-  - hashid => hat geklappt
-- [Hashcat](unterpunkte/gaining-access/db-access_DONE/gaining-db-access.md#3-hashcat)
-  - um PW herauszufinden
-
-> Ergebnis:  
-User: Ralph  
-PW: 147258369
-
----
-
 ### Admin Panel Exploitation
 Mit dem Passwort von der DB Exploitation
 
