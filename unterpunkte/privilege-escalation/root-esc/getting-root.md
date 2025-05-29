@@ -10,12 +10,12 @@ ssh -L 1337:127.0.0.1:8500 ron@heal.htb
 
 ssh -L <LOCAL PORT>:<REMOTE IP>:<REMOTE PORT> <USER>@<SERVER>
 ```
-![img.png](../../../screenshots/ssh-local-port-forwarding.png)
+![img.png](../../../img/ssh-local-port-forwarding.png)
 - Try with every port
 - Only response on port 8500
 
 
-![img.png](../../../screenshots/consul-webapp-version.png)
+![img.png](../../../img/consul-webapp-version.png)
 ---
 
 ### Enumerate Consul
