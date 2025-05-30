@@ -181,13 +181,13 @@ Result:
 
 xterm-256color
 ```
-![img.png](../../../screenshots/standard-terminal.png)
+![img.png](../../../img/standard-terminal.png)
 
 Anschließend das Terminal setzen
 ```
 export TERM=xterm-256color
 ```
-![img_1.png](../../../screenshots/export-terminal.png)
+![img_1.png](../../../img/export-terminal.png)
 
 ### 6. TAB, Arrow keys, Auto completion works
 ![fully-functional-terminal.png](../../../screenshots/fully-functional-terminal.png)
