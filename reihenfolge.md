@@ -161,10 +161,10 @@ Reverse shell
 ---
 
 ### Getting root access
-1. [Remember internal ports from linpeas script](unterpunkte/privilege-escalation/root-esc/getting-root.md#active-ports-with-user)
+1. [Remember internal ports from linpeas script](unterpunkte/privilege-escalation_DONE/root-esc/getting-root.md#active-ports-with-user)
 - Local Port Forwarding via ssh
 
-2. [Found new tool "consul"](unterpunkte/privilege-escalation/root-esc/getting-root.md#enumerate-consul)
+2. [Found new tool "consul"](unterpunkte/privilege-escalation_DONE/root-esc/getting-root.md#enumerate-consul)
 - Check for CVE's
 - use script -> didnt work because didnt have acl token
 - search for acl token
@@ -173,7 +173,7 @@ Reverse shell
 - adjust script
 - => BOOM ROOT
 
-3. [Root flag](unterpunkte/privilege-escalation/root-esc/getting-root.md#root-flag)
+3. [Root flag](unterpunkte/privilege-escalation_DONE/root-esc/getting-root.md#root-flag)
 
 
 

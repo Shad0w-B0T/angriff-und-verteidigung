@@ -338,7 +338,7 @@ psql -d survey -h localhost -p 5432 -U db_user -W
 ---
 
 
-# [Getting Root](../../privilege-escalation/root-esc/getting-root.md)
+# [Getting Root](../../privilege-escalation_DONE/root-esc/getting-root.md)
 
 
 ---
