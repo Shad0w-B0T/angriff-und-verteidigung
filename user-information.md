@@ -1,5 +1,5 @@
 # Users
-- Admin: <strong>Email [ ralph@heal.htb ]</strong>
+- Admin: Email ralph@heal.htb
 - Ron 
 - Postgres
 
@@ -16,10 +16,6 @@ ssh ron@heal.htb
 ```
 AdmiDi0_pA$$w0rd
 ```
-```
-python3 -c 'import pty; pty.spawn("/bin/bash")'
-```
-
 
 # Flags:
 ### User
@@ -31,3 +27,4 @@ python3 -c 'import pty; pty.spawn("/bin/bash")'
 ```
 b8f472af33e452a2014e0f24d02b47cd
 ```
+

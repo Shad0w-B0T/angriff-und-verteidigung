@@ -28,11 +28,11 @@ ssh -L <LOCAL PORT>:<REMOTE IP>:<REMOTE PORT> <USER>@<SERVER>
 
 1. Listen on Port 7331
 
-![listening-port-consul.png](../../../screenshots/listening-port-consul.png)
+![listening-port-consul.png](../../../img/listening-port-consul.png)
 
 2. Execute Script
 
-![consul-script.png](../../../screenshots/consul-script.png)
+![consul-script.png](../../../img/consul-script.png)
 - ACL Token missing
 
 #### 3. Try to get ACL Token
@@ -44,11 +44,11 @@ find /etc /opt /usr /var -type f -iname "*consul*" 2>/dev/null
     -iname:         filename includes (case insensitive)
     -2>/dev/null:   suppresses errors by redirecting stderr to /dev/null
 ```
-![find-consul.png](../../../screenshots/find-consul.png)
+![find-consul.png](../../../img/find-consul.png)
 
 - Found config dir for consul
 
-![consul-directories.png](../../../screenshots/consul-directories.png)
+![consul-directories.png](../../../img/consul-directories.png)
 
 ```
 {
@@ -82,9 +82,10 @@ Problem:
 <strong>=> I don't need an ACL Token</strong>
 
 Quellen:
+- https://developer.hashicorp.com/consul/api-docs/v1.19.x/agent/service#register-service
 - https://developer.hashicorp.com/consul/docs/secure/acl/policy
-- https://developer.hashicorp.com/consul/api-docs/api-structure#authentication
-- https://developer.hashicorp.com/consul/commands/acl/token
+- https://developer.hashicorp.com/consul/api-docs/v1.19.x/api-structure#authentication
+- https://developer.hashicorp.com/consul/commands/v1.19.x/acl/token
 
 #### 4. Customise script without the acl token
 - Remove acl token argument & adjusted necessary arguments to 5 in first if statement
@@ -109,26 +110,29 @@ except:
 
 1. Listen to port 7331 again
 
-![listening-port-consul.png](../../../screenshots/listening-port-consul.png)
+![listening-port-consul.png](../../../img/listening-port-consul.png)
 
 2. Execute the adjusted script
 
-![img.png](../../../screenshots/working-consul-exploit-script.png)
+![img.png](../../../img/working-consul-exploit-script.png)
 
 3. Agent registered new service
-![img.png](../../../screenshots/new-service-created.png)
+
+![img.png](../../../img/new-service-created.png)
 
 4. Root reverse shell connection
-![img.png](../../../screenshots/root-rev-shell.png)
+
+![img.png](../../../img/root-rev-shell.png)
 
 5. Take root flag
-![img.png](../../../screenshots/root-flag.png)
+
+![img.png](../../../img/root-flag.png)
 
 
 ---
 
 ### Root Flag
-![img.png](../../../screenshots/heal-pwned.png)
+![img.png](../../../img/heal-pwned.png)
 
 ---
 
